@@ -2,7 +2,7 @@
 You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.
 Return the merged string.
 */
-public class MergeStringsAlternately {
+public class MergeStringsAlternately1768 {
     public static void main(String[] args) {
         System.out.println(mergeAlternately("abc", "pqr"));
         System.out.println(mergeAlternately("ab", "pqrs"));

@@ -4,7 +4,7 @@ Consider a list of all factors of n sorted in ascending order, return the kth fa
 */
 import java.util.ArrayList;
 
-public class TheKthFactorOfN {
+public class TheKthFactorOfN1492 {
     public static void main(String[] args) {
         System.out.println(kthFactor(12, 3));
         System.out.println(kthFactor(7, 2));

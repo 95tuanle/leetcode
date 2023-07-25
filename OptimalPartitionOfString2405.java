@@ -5,7 +5,7 @@ Note that each character should belong to exactly one substring in a partition.
 */
 import java.util.ArrayList;
 
-public class OptimalPartitionOfString {
+public class OptimalPartitionOfString2405 {
     public static void main(String[] args) {
         System.out.println(partitionString("abacaba"));
         System.out.println(partitionString("ssssss"));
