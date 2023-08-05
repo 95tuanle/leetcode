@@ -13,20 +13,25 @@ public class WordBreak139 {
     }
 
     public static boolean wordBreak(String s, List<String> wordDict) {
+        boolean[] dp = new boolean[s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            for (String word : wordDict) {
+                if (word.length() <= i + 1 && word.equals(s.substring(i + 1 - word.length(), i + 1))) {
+                    if (i + 1 - word.length() == 0 || dp[i - word.length()]) {
+                        dp[i] = true;
+                        break;
+                    }
+                }
+            }
+        }
+        return dp[s.length() - 1];
 
-        return false;
-
-//        boolean[] dp = new boolean[s.length()];
+//        int start = 0;
 //        for (int i = 0; i < s.length(); i++) {
-//            for (String word : wordDict) {
-//                if (word.length() <= i + 1 && word.equals(s.substring(i + 1 - word.length(), i + 1))) {
-//                    if (i + 1 - word.length() == 0 || dp[i - word.length()]) {
-//                        dp[i] = true;
-//                        break;
-//                    }
-//                }
+//            if (wordDict.contains(s.substring(start, i + 1))) {
+//                start = i + 1;
 //            }
 //        }
-//        return dp[s.length() - 1];
+//        return start == s.length();
     }
 }
