@@ -5,7 +5,6 @@ For example, if the 1st train ride takes 1.5 hours, you must wait for an additio
 Return the minimum positive integer speed (in kilometers per hour) that all the trains must travel at for you to reach the office on time, or -1 if it is impossible to be on time.
 Tests are generated such that the answer will not exceed 107 and hour will have at most two digits after the decimal point.
 */
-
 public class MinimumSpeedToArriveOnTime1870 {
     public static void main(String[] args) {
         System.out.println(minSpeedOnTime(new int[]{1, 3, 2}, 6));

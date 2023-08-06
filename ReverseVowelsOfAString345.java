@@ -1,12 +1,11 @@
-/*
-Given a string s, reverse only all the vowels in the string and return it.
-The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
-*/
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/*
+Given a string s, reverse only all the vowels in the string and return it.
+The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+*/
 public class ReverseVowelsOfAString345 {
     public static void main(String[] args) {
         System.out.println(reverseVowels("hello"));
