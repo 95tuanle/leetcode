@@ -1,6 +1,3 @@
-import java.util.HashMap;
-import java.util.Map;
-
 /*
 Given an array of characters chars, compress it using the following algorithm:
 Begin with an empty string s. For each group of consecutive repeating characters in chars:
@@ -12,10 +9,10 @@ You must write an algorithm that uses only constant extra space.
 */
 public class StringCompression443 {
     public static void main(String[] args) {
-        System.out.println(compress(new char[]{'a','a','b','b','c','c','c'}));
+        System.out.println(compress(new char[]{'a', 'a', 'b', 'b', 'c', 'c', 'c'}));
         System.out.println(compress(new char[]{'a'}));
-        System.out.println(compress(new char[]{'a','b','b','b','b','b','b','b','b','b','b','b','b'}));
-        System.out.println(compress(new char[]{'a','a','a','b','b','a','a'}));
+        System.out.println(compress(new char[]{'a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'}));
+        System.out.println(compress(new char[]{'a', 'a', 'a', 'b', 'b', 'a', 'a'}));
     }
 
     public static int compress(char[] chars) {
