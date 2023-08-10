@@ -16,25 +16,47 @@ public class StringCompression443 {
     }
 
     public static int compress(char[] chars) {
-        int i = 0;
-        int j = 0;
-        while (j < chars.length) {
-            int count = 0;
-            char c = chars[j];
-            while (j < chars.length && chars[j] == c) {
-                count++;
-                j++;
-            }
-            chars[i] = c;
-            i++;
-            if (count != 1) {
-                for (char ch : Integer.toString(count).toCharArray()) {
-                    chars[i] = ch;
-                    i++;
-                }
+        StringBuilder sb = new StringBuilder();
+        char currentChar = chars[0];
+        int times = 0;
+        for (char c : chars) {
+            if (c == currentChar) {
+                times++;
+            } else {
+                sb.append(currentChar).append(times == 1 ? "" : times);
+                currentChar = c;
+                times = 1;
             }
         }
-        return i;
+        sb.append(currentChar).append(times == 1 ? "" : times);
+        for (int i = 0; i < chars.length; i++) {
+            if (i < sb.length()) {
+                chars[i] = sb.charAt(i);
+            } else {
+                chars[i] = ' ';
+            }
+        }
+        return sb.length();
+
+//        int i = 0;
+//        int j = 0;
+//        while (j < chars.length) {
+//            int count = 0;
+//            char c = chars[j];
+//            while (j < chars.length && chars[j] == c) {
+//                count++;
+//                j++;
+//            }
+//            chars[i] = c;
+//            i++;
+//            if (count != 1) {
+//                for (char currentChar : Integer.toString(count).toCharArray()) {
+//                    chars[i] = currentChar;
+//                    i++;
+//                }
+//            }
+//        }
+//        return i;
 
 //        Map<Character, Integer> map = new HashMap<>();
 //        for (char c: chars) {
