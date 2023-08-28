@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 /*
 In the world of Dota2, there are two parties: the Radiant and the Dire.
 The Dota2 senate consists of senators coming from two parties. Now the Senate wants to decide on a change in the Dota2 game. The voting for this change is a round-based procedure. In each round, each senator can exercise one of the two rights:
@@ -9,10 +12,45 @@ Suppose every senator is smart enough and will play the best strategy for his ow
 */
 public class Dota2Senate649 {
     public static void main(String[] args) {
-
+        System.out.println(predictPartyVictory("RD"));
+        System.out.println(predictPartyVictory("RDD"));
+        System.out.println(predictPartyVictory("DDRRR"));
     }
 
     public static String predictPartyVictory(String senate) {
-        return "";
+        Queue<Character> senateQueue = new LinkedList<>();
+        int radiant = 0;
+        int dire = 0;
+        for (char senateChar : senate.toCharArray()) {
+            senateQueue.offer(senateChar);
+            if (senateChar == 'R') {
+                radiant++;
+            } else {
+                dire++;
+            }
+        }
+        int bannedRadiant = 0;
+        int bannedDire = 0;
+        while (radiant > 0 && dire > 0 && !senateQueue.isEmpty()) {
+            char senateChar = senateQueue.poll();
+            if (senateChar == 'R') {
+                if (bannedRadiant > 0) {
+                    bannedRadiant--;
+                    radiant--;
+                } else {
+                    bannedDire++;
+                    senateQueue.offer(senateChar);
+                }
+            } else {
+                if (bannedDire > 0) {
+                    bannedDire--;
+                    dire--;
+                } else {
+                    bannedRadiant++;
+                    senateQueue.offer(senateChar);
+                }
+            }
+        }
+        return radiant > 0 ? "Radiant" : "Dire";
     }
 }
