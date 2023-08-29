@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /*
 Given an array of strings strs, group the anagrams together. You can return the answer in any order.
@@ -6,7 +9,7 @@ An Anagram is a word or phrase formed by rearranging the letters of a different 
 */
 public class GroupAnagrams49 {
     public static void main(String[] args) {
-        System.out.println(groupAnagrams(new String[]{"eat","tea","tan","ate","nat","bat"}));
+        System.out.println(groupAnagrams(new String[]{"eat", "tea", "tan", "ate", "nat", "bat"}));
     }
 
     public static List<List<String>> groupAnagrams(String[] strs) {
