@@ -6,19 +6,31 @@ Given the head of a linked list with even length, return the maximum twin sum of
 */
 public class MaximumTwinSumOfALinkedList2130 {
     public static void main(String[] args) {
-        System.out.println(new MaximumTwinSumOfALinkedList2130().pairSum(new ListNode(5, new ListNode(4, new ListNode(2, new ListNode(1))))));
-        System.out.println(new MaximumTwinSumOfALinkedList2130().pairSum(new ListNode(4, new ListNode(2, new ListNode(2, new ListNode(3))))));
+        System.out.println(pairSum(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))))));
+        System.out.println(pairSum(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))))));
+        System.out.println(pairSum(new ListNode(1, new ListNode(2))));
+        System.out.println(pairSum(new ListNode(1)));
+        System.out.println(pairSum(null));
     }
 
-    public int pairSum(ListNode head) {
+    public static int pairSum(ListNode head) {
         return 0;
     }
 
     public static class ListNode {
         int val;
         ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
 }
