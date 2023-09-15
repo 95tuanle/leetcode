@@ -6,15 +6,43 @@ Given the head of a linked list with even length, return the maximum twin sum of
 */
 public class MaximumTwinSumOfALinkedList2130 {
     public static void main(String[] args) {
-        System.out.println(pairSum(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))))));
-        System.out.println(pairSum(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))))));
-        System.out.println(pairSum(new ListNode(1, new ListNode(2))));
-        System.out.println(pairSum(new ListNode(1)));
+        System.out.println(pairSum(new ListNode(5, new ListNode(4, new ListNode(2, new ListNode(1))))));
+        System.out.println(pairSum(new ListNode(4, new ListNode(2, new ListNode(3, new ListNode(3))))));
+        System.out.println(pairSum(new ListNode(1, new ListNode(100000))));
         System.out.println(pairSum(null));
     }
 
     public static int pairSum(ListNode head) {
-        return 0;
+        int[] values = new int[100000];
+        int numberOfNodes = 0;
+        while (head != null) {
+            values[numberOfNodes++] = head.val;
+            head = head.next;
+        }
+        int max = 0;
+        for (int i = 0; i < numberOfNodes / 2; i++) {
+            max = Math.max(max, values[i] + values[numberOfNodes - 1 - i]);
+        }
+        return max;
+
+//        int numberOfNodes = 0;
+//        ListNode previous = null;
+//        ListNode current = head;
+//        ListNode node = head;
+//        while (node != null) {
+//            numberOfNodes++;
+//            node = node.next;
+//            current.next = previous;
+//            previous = current;
+//            current = node;
+//        }
+//        int max = 0;
+//        for (int i = 0; i < numberOfNodes / 2; i++) {
+//            max = Math.max(max, head.val + previous.val);
+//            head = head.next;
+//            previous = previous.next;
+//        }
+//        return max;
     }
 
     public static class ListNode {
