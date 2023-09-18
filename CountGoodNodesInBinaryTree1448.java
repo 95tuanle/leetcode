@@ -9,24 +9,20 @@ public class CountGoodNodesInBinaryTree1448 {
     }
 
     public static int goodNodes(TreeNode root) {
-        int count = 1;
-        count += depthFirstSearch(root.left, root.val);
-        count += depthFirstSearch(root.right, root.val);
-        return count;
+        return countGoodNodes(root, root.val);
     }
 
-    public static int depthFirstSearch(TreeNode root, int max) {
-        int count = 0;
-        if (root != null) {
-            if (root.val >= max) {
-                count++;
-                count += depthFirstSearch(root.left, root.val);
-                count += depthFirstSearch(root.right, root.val);
-            } else {
-                count += depthFirstSearch(root.left, max);
-                count += depthFirstSearch(root.right, max);
-            }
+    public static int countGoodNodes(TreeNode node, int max) {
+        if (node == null) {
+            return 0;
         }
+        int count = 0;
+        if (node.val >= max) {
+            count++;
+            max = node.val;
+        }
+        count += countGoodNodes(node.left, max);
+        count += countGoodNodes(node.right, max);
         return count;
     }
 
