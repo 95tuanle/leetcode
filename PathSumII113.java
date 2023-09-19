@@ -1,8 +1,10 @@
+import java.util.List;
+
 /*
-Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.
-A leaf is a node with no children.
+Given the root of a binary tree and an integer targetSum, return all root-to-leaf paths where the sum of the node values in the path equals targetSum. Each path should be returned as a list of the node values, not node references.
+A root-to-leaf path is a path starting from the root and ending at any leaf node. A leaf is a node with no children.
 */
-public class PathSumI112 {
+public class PathSumII113 {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(5);
         root.left = new TreeNode(4);
@@ -15,25 +17,23 @@ public class PathSumI112 {
         root.right.right.left = new TreeNode(5);
         root.right.right.right = new TreeNode(1);
 
-        System.out.println(hasPathSum(root, 22));
+        System.out.println(pathSum(root, 22));
 
         TreeNode root2 = new TreeNode(1);
         root2.left = new TreeNode(2);
         root2.right = new TreeNode(3);
 
-        System.out.println(hasPathSum(root2, 5));
+        System.out.println(pathSum(root2, 5));
 
-        System.out.println(hasPathSum(null, 0));
+        System.out.println(pathSum(null, 0));
 
         TreeNode root3 = new TreeNode(1);
 
-        System.out.println(hasPathSum(root3, 1));
+        System.out.println(pathSum(root3, 1));
     }
 
-    public static boolean hasPathSum(TreeNode root, int targetSum) {
-        if (root == null) return false;
-        if (root.left == null && root.right == null) return targetSum == root.val;
-        return hasPathSum(root.left, targetSum - root.val) || hasPathSum(root.right, targetSum - root.val);
+    public static List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+        return null;
     }
 
     public static class TreeNode {
