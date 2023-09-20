@@ -7,7 +7,7 @@ public class LinkedListCycle141 {
     public static void main(String[] args) {
         ListNode head = new ListNode(3);
         head.next = new ListNode(2);
-        head.next.next  = new ListNode(0);
+        head.next.next = new ListNode(0);
         head.next.next.next = new ListNode(-4);
         head.next.next.next.next = head.next;
 
@@ -15,7 +15,7 @@ public class LinkedListCycle141 {
 
         ListNode head2 = new ListNode(1);
         head2.next = new ListNode(2);
-        head2.next.next  = head2;
+        head2.next.next = head2;
 
         System.out.println(hasCycle(head2));
 
@@ -38,6 +38,7 @@ public class LinkedListCycle141 {
     public static class ListNode {
         int val;
         ListNode next;
+
         ListNode(int x) {
             val = x;
             next = null;
