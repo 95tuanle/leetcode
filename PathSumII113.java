@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.List;
 
 /*
@@ -33,7 +34,22 @@ public class PathSumII113 {
     }
 
     public static List<List<Integer>> pathSum(TreeNode root, int targetSum) {
-        return null;
+        List<List<Integer>> result = new LinkedList<>();
+        depthFirstSearch(root, targetSum, new LinkedList<>(), result);
+        return result;
+    }
+
+    public static void depthFirstSearch(TreeNode node, int targetSum, LinkedList<Integer> currentPath, List<List<Integer>> result) {
+        if (node == null) return;
+        currentPath.addLast(node.val);
+        targetSum -= node.val;
+        if (node.left == null && node.right == null && targetSum == 0) {
+            result.add(new LinkedList<>(currentPath));
+        } else {
+            depthFirstSearch(node.left, targetSum, currentPath, result);
+            depthFirstSearch(node.right, targetSum, currentPath, result);
+        }
+        currentPath.removeLast();
     }
 
     public static class TreeNode {
