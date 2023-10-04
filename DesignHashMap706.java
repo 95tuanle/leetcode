@@ -47,3 +47,101 @@ class MyHashMap {
         data[key] = -1;
     }
 }
+
+//class MyHashMap<K, V> {
+//    private static final int DEFAULT_CAPACITY = 16;
+//    private static final double LOAD_FACTOR = 0.75;
+//
+//    private LinkedList<Entry<K, V>>[] buckets;
+//    private int size;
+//
+//    public MyHashMap() {
+//        buckets = new LinkedList[DEFAULT_CAPACITY];
+//        size = 0;
+//    }
+//
+//    public void put(K key, V value) {
+//        if (key == null)
+//            return;
+//
+//        int index = hash(key);
+//        if (buckets[index] == null) {
+//            buckets[index] = new LinkedList<>();
+//        }
+//
+//        for (Entry<K, V> entry : buckets[index]) {
+//            if (entry.key.equals(key)) {
+//                entry.value = value;
+//                return;
+//            }
+//        }
+//
+//        buckets[index].add(new Entry<>(key, value));
+//        size++;
+//
+//        if ((double) size / buckets.length >= LOAD_FACTOR) {
+//            resize();
+//        }
+//    }
+//
+//    public int get(K key) {
+//        if (key == null)
+//            return -1;
+//
+//        int index = hash(key);
+//        if (buckets[index] == null)
+//            return -1;
+//
+//        for (Entry<K, V> entry : buckets[index]) {
+//            if (entry.key.equals(key)) {
+//                return (int) entry.value;
+//            }
+//        }
+//
+//        return -1;
+//    }
+//
+//    public void remove(K key) {
+//        if (key == null)
+//            return;
+//
+//        int index = hash(key);
+//        if (buckets[index] == null)
+//            return;
+//
+//        buckets[index].removeIf(entry -> entry.key.equals(key));
+//    }
+//
+//    private int hash(K key) {
+//        return key.hashCode() % buckets.length;
+//    }
+//
+//    private void resize() {
+//        int newCapacity = buckets.length * 2;
+//        LinkedList<Entry<K, V>>[] newBuckets = new LinkedList[newCapacity];
+//
+//        for (LinkedList<Entry<K, V>> bucket : buckets) {
+//            if (bucket != null) {
+//                for (Entry<K, V> entry : bucket) {
+//                    int index = entry.key.hashCode() % newCapacity;
+//                    if (newBuckets[index] == null) {
+//                        newBuckets[index] = new LinkedList<>();
+//                    }
+//                    newBuckets[index].add(entry);
+//                }
+//            }
+//        }
+//
+//        buckets = newBuckets;
+//    }
+//
+//    private static class Entry<K, V> {
+//        K key;
+//        V value;
+//
+//        Entry(K key, V value) {
+//            this.key = key;
+//            this.value = value;
+//        }
+//    }
+//}
