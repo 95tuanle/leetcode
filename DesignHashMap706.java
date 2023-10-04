@@ -48,6 +48,62 @@ class MyHashMap {
     }
 }
 
+//class MyHashMap {
+//    private static final int CAPACITY = 1000001;
+//
+//    private final List<Entry>[] table;
+//
+//    public MyHashMap() {
+//        table = new ArrayList[CAPACITY];
+//        for (int i = 0; i < CAPACITY; i++) {
+//            table[i] = new ArrayList<>();
+//        }
+//    }
+//
+//    public void put(int key, int value) {
+//        int index = key % CAPACITY;
+//        for (Entry entry : table[index]) {
+//            if (entry.key == key) {
+//                entry.value = value;
+//                return;
+//            }
+//        }
+//        table[index].add(new Entry(key, value));
+//    }
+//
+//    public int get(int key) {
+//        int index = key % CAPACITY;
+//        for (Entry entry : table[index]) {
+//            if (entry.key == key) {
+//                return entry.value;
+//            }
+//        }
+//        return -1;
+//    }
+//
+//    public void remove(int key) {
+//        int index = key % CAPACITY;
+//        Iterator<Entry> iterator = table[index].iterator();
+//        while (iterator.hasNext()) {
+//            Entry entry = iterator.next();
+//            if (entry.key == key) {
+//                iterator.remove();
+//                return;
+//            }
+//        }
+//    }
+//
+//    private static class Entry {
+//        int key;
+//        int value;
+//
+//        public Entry(int key, int value) {
+//            this.key = key;
+//            this.value = value;
+//        }
+//    }
+//}
+
 //class MyHashMap<K, V> {
 //    private static final int DEFAULT_CAPACITY = 16;
 //    private static final double LOAD_FACTOR = 0.75;
