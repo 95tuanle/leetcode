@@ -1,17 +1,16 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class MajorityElementII229 {
     public static void main(String[] args) {
-        int[] nums = {1,1,1,3,3,2,2,2};
+        int[] nums = {1, 1, 1, 3, 3, 2, 2, 2};
         List<Integer> list = majorityElement(nums);
         for (int num : list) {
             System.out.print(num + " ");
         }
         System.out.println();
 
-        int[] nums2 = {3,2,3};
+        int[] nums2 = {3, 2, 3};
         List<Integer> list2 = majorityElement(nums2);
         for (int num : list2) {
             System.out.print(num + " ");
