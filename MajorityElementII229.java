@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
+*/
 public class MajorityElementII229 {
     public static void main(String[] args) {
         int[] nums = {1, 1, 1, 3, 3, 2, 2, 2};
@@ -53,8 +56,18 @@ public class MajorityElementII229 {
 //        HashMap<Integer, Integer> hashMap = new HashMap<>();
 //        for (int num : nums) hashMap.put(num, hashMap.getOrDefault(num, 0) + 1);
 //        List<Integer> list = new ArrayList<>();
-//        int n = nums.length;
-//        for (int key : hashMap.keySet()) if (hashMap.get(key) > n / 3) list.add(key);
+//        double threshold = nums.length / 3.0;
+//        for (int key : hashMap.keySet()) if (hashMap.get(key) > threshold) list.add(key);
 //        return list;
+
+//        HashMap<Integer, Integer> hashMap = new HashMap<>();
+//        Set<Integer> set = new HashSet<>();
+//        double threshold = nums.length / 3.0;
+//        for (int num : nums) {
+//            int times = hashMap.getOrDefault(num, 0) + 1;
+//            hashMap.put(num, times);
+//            if (times > threshold) set.add(num);
+//        }
+//        return set.stream().toList();
     }
 }
