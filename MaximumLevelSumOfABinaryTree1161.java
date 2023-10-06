@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 /*
 Given the root of a binary tree, the level of its root is 1, the level of its children is 2, and so on.
