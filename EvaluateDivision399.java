@@ -43,12 +43,11 @@ public class EvaluateDivision399 {
         while (!queue.isEmpty()) {
             String current = queue.poll();
             if (current.equals(target)) return visited.get(current);
-            for (String neighbor : adj.get(current).keySet()) {
+            for (String neighbor : adj.get(current).keySet())
                 if (!visited.containsKey(neighbor)) {
                     queue.add(neighbor);
                     visited.put(neighbor, visited.get(current) * adj.get(current).get(neighbor));
                 }
-            }
         }
         return -1.0;
     }

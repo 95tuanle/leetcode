@@ -11,14 +11,9 @@ public class GreatestCommonDivisorOfStrings1071 {
 
     public static String gcdOfStrings(String str1, String str2) {
         int len1 = str1.length(), len2 = str2.length();
-        if (len1 < len2) {
-            return gcdOfStrings(str2, str1);
-        } else if (!str1.startsWith(str2)) {
-            return "";
-        } else if (len2 == 0) {
-            return str1;
-        } else {
-            return gcdOfStrings(str1.substring(len2), str2);
-        }
+        if (len1 < len2) return gcdOfStrings(str2, str1);
+        else if (!str1.startsWith(str2)) return "";
+        else if (len2 == 0) return str1;
+        else return gcdOfStrings(str1.substring(len2), str2);
     }
 }

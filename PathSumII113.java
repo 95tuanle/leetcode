@@ -43,9 +43,8 @@ public class PathSumII113 {
         if (node == null) return;
         currentPath.addLast(node.val);
         targetSum -= node.val;
-        if (node.left == null && node.right == null && targetSum == 0) {
-            result.add(new LinkedList<>(currentPath));
-        } else {
+        if (node.left == null && node.right == null && targetSum == 0) result.add(new LinkedList<>(currentPath));
+        else {
             depthFirstSearch(node.left, targetSum, currentPath, result);
             depthFirstSearch(node.right, targetSum, currentPath, result);
         }

@@ -17,13 +17,12 @@ public class OneThreeTwoPattern456 {
         int[] min = new int[nums.length];
         min[0] = nums[0];
         for (int i = 1; i < nums.length; i++) min[i] = Math.min(min[i - 1], nums[i]);
-        for (int j = nums.length - 1; j >= 0; j--) {
+        for (int j = nums.length - 1; j >= 0; j--)
             if (nums[j] > min[j]) {
                 while (!stack.empty() && stack.peek() <= min[j]) stack.pop();
                 if (!stack.empty() && stack.peek() < nums[j]) return true;
                 stack.push(nums[j]);
             }
-        }
         return false;
 
 //        int minI = Integer.MAX_VALUE;

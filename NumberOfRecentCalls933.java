@@ -27,9 +27,7 @@ class RecentCounter {
 
     public int ping(int t) {
         this.queue.add(t);
-        while (!this.queue.isEmpty() && this.queue.peek() < t - 3000) {
-            this.queue.poll();
-        }
+        while (!this.queue.isEmpty() && this.queue.peek() < t - 3000) this.queue.poll();
         return this.queue.size();
     }
 }

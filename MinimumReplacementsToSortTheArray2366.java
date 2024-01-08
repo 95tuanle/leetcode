@@ -13,9 +13,7 @@ public class MinimumReplacementsToSortTheArray2366 {
     public static long minimumReplacement(int[] nums) {
         long times = 0;
         for (int i = nums.length - 2; i >= 0; i--) {
-            if (nums[i] <= nums[i + 1]) {
-                continue;
-            }
+            if (nums[i] <= nums[i + 1]) continue;
             long numberOfElements = (nums[i] + nums[i + 1] - 1) / nums[i + 1];
             times += numberOfElements - 1;
             nums[i] = (int) (nums[i] / numberOfElements);

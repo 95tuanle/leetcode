@@ -12,19 +12,12 @@ public class IsSubsequence392 {
     }
 
     public static boolean isSubsequence(String s, String t) {
-        if (s.isEmpty()) {
-            return true;
-        } else if (s.length() == t.length()) {
-            return s.equals(t);
-        }
+        if (s.isEmpty()) return true;
+        else if (s.length() == t.length()) return s.equals(t);
         int position = 0;
         for (int i = 0; i < t.length(); i++) {
-            if (s.charAt(position) == t.charAt(i)) {
-                position++;
-            }
-            if (position == s.length()) {
-                return true;
-            }
+            if (s.charAt(position) == t.charAt(i)) position++;
+            if (position == s.length()) return true;
         }
         return false;
 

@@ -23,11 +23,8 @@ public class Dota2Senate649 {
         int dire = 0;
         for (char senateChar : senate.toCharArray()) {
             senateQueue.offer(senateChar);
-            if (senateChar == 'R') {
-                radiant++;
-            } else {
-                dire++;
-            }
+            if (senateChar == 'R') radiant++;
+            else dire++;
         }
         int bannedRadiant = 0;
         int bannedDire = 0;

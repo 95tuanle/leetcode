@@ -11,12 +11,11 @@ public class MoveZeroes283 {
 
     public static void moveZeroes(int[] nums) {
         int i = 0;
-        for (int num : nums) {
+        for (int num : nums)
             if (num != 0) {
                 nums[i] = num;
                 i++;
             }
-        }
         if (i == 0) return;
         while (i < nums.length) {
             nums[i] = 0;

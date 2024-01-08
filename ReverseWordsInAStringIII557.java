@@ -10,9 +10,7 @@ public class ReverseWordsInAStringIII557 {
     public static String reverseWords(String s) {
         String[] words = s.split(" ");
         StringBuilder stringBuilder = new StringBuilder();
-        for (String word : words) {
-            stringBuilder.append(reverseWord(word)).append(" ");
-        }
+        for (String word : words) stringBuilder.append(reverseWord(word)).append(" ");
         return stringBuilder.toString().trim();
     }
 

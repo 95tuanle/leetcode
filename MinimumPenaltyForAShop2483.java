@@ -19,23 +19,13 @@ public class MinimumPenaltyForAShop2483 {
     public static int bestClosingTime(String customers) {
         int minPenalty = 0;
         int minClosingTime = 0;
-        for (char c : customers.toCharArray()) {
-            if (c == 'Y') {
-                minPenalty++;
-            }
-        }
-        if (minPenalty == 0) {
-            return minClosingTime;
-        } else if (minPenalty == customers.length()) {
-            return minPenalty;
-        }
+        for (char c : customers.toCharArray()) if (c == 'Y') minPenalty++;
+        if (minPenalty == 0) return minClosingTime;
+        else if (minPenalty == customers.length()) return minPenalty;
         int currentPenalty = minPenalty;
         for (int i = 1; i <= customers.length(); i++) {
-            if (customers.charAt(i - 1) == 'Y') {
-                currentPenalty--;
-            } else {
-                currentPenalty++;
-            }
+            if (customers.charAt(i - 1) == 'Y') currentPenalty--;
+            else currentPenalty++;
             if (currentPenalty < minPenalty) {
                 minPenalty = currentPenalty;
                 minClosingTime = i;

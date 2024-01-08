@@ -9,28 +9,17 @@ Return the indices of the k weakest rows in the matrix ordered from weakest to s
 */
 public class TheKWeakestRowsInAMatrix1337 {
     public static void main(String[] args) {
-        int[][] mat = {{1, 1, 0, 0, 0},
-                {1, 1, 1, 1, 0},
-                {1, 0, 0, 0, 0},
-                {1, 1, 0, 0, 0},
-                {1, 1, 1, 1, 1}};
+        int[][] mat = {{1, 1, 0, 0, 0}, {1, 1, 1, 1, 0}, {1, 0, 0, 0, 0}, {1, 1, 0, 0, 0}, {1, 1, 1, 1, 1}};
         int k = 3;
         int[] result = kWeakestRows(mat, k);
-        for (int j : result) {
-            System.out.print(j + ' ');
-        }
+        for (int j : result) System.out.print(j + ' ');
 
         System.out.println();
 
-        int[][] mat2 = {{1, 0, 0, 0},
-                {1, 1, 1, 1},
-                {1, 0, 0, 0},
-                {1, 0, 0, 0}};
+        int[][] mat2 = {{1, 0, 0, 0}, {1, 1, 1, 1}, {1, 0, 0, 0}, {1, 0, 0, 0}};
         int k2 = 2;
         int[] result2 = kWeakestRows(mat2, k2);
-        for (int j : result2) {
-            System.out.print(j + ' ');
-        }
+        for (int j : result2) System.out.print(j + ' ');
     }
 
     public static int[] kWeakestRows(int[][] mat, int k) {
@@ -46,9 +35,7 @@ public class TheKWeakestRowsInAMatrix1337 {
         }
         Arrays.sort(rowStrengths, (a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);
         int[] result = new int[k];
-        for (int i = 0; i < k; i++) {
-            result[i] = rowStrengths[i][1];
-        }
+        for (int i = 0; i < k; i++) result[i] = rowStrengths[i][1];
         return result;
     }
 }

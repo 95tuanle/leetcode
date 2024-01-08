@@ -23,10 +23,7 @@ public class MedianOfTwoSortedArrays4 {
             i++;
         }
         Arrays.sort(merged);
-        if (length % 2 == 1) {
-            return merged[length / 2];
-        } else {
-            return (double) (merged[length / 2 - 1] + merged[length / 2]) / 2;
-        }
+        if (length % 2 == 1) return merged[length / 2];
+        else return (double) (merged[length / 2 - 1] + merged[length / 2]) / 2;
     }
 }

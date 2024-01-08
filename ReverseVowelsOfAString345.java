@@ -17,16 +17,13 @@ public class ReverseVowelsOfAString345 {
         char[] chars = s.toCharArray();
         List<Character> foundVowels = new ArrayList<>();
         List<Integer> foundVowelsIndex = new ArrayList<>();
-        for (int i = 0; i < chars.length; i++) {
+        for (int i = 0; i < chars.length; i++)
             if (vowels.contains(Character.toLowerCase(chars[i]))) {
                 foundVowels.add(chars[i]);
                 foundVowelsIndex.add(i);
             }
-        }
         Collections.reverse(foundVowels);
-        for (int i = 0; i < foundVowelsIndex.size(); i++) {
-            chars[foundVowelsIndex.get(i)] = foundVowels.get(i);
-        }
+        for (int i = 0; i < foundVowelsIndex.size(); i++) chars[foundVowelsIndex.get(i)] = foundVowels.get(i);
         return new String(chars);
     }
 }

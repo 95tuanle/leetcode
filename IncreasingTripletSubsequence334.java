@@ -13,15 +13,10 @@ public class IncreasingTripletSubsequence334 {
     public static boolean increasingTriplet(int[] nums) {
         int firstElement = Integer.MAX_VALUE;
         int secondElement = Integer.MAX_VALUE;
-        for (int num : nums) {
-            if (num <= firstElement) {
-                firstElement = num;
-            } else if (num <= secondElement) {
-                secondElement = num;
-            } else {
-                return true;
-            }
-        }
+        for (int num : nums)
+            if (num <= firstElement) firstElement = num;
+            else if (num <= secondElement) secondElement = num;
+            else return true;
         return false;
 
 

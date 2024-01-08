@@ -15,9 +15,7 @@ public class MaximumNumberOfVowelsInASubstringOfGivenLength1456 {
     public static int maxVowels(String s, int k) {
         Set<Character> vowels = Set.of('a', 'e', 'i', 'o', 'u');
         int temp = 0;
-        for (int i = 0; i < k; i++) {
-            if (vowels.contains(s.charAt(i))) temp++;
-        }
+        for (int i = 0; i < k; i++) if (vowels.contains(s.charAt(i))) temp++;
         int max = temp;
         for (int i = k; i < s.length(); i++) {
             temp += vowels.contains(s.charAt(i)) ? 1 : 0;

@@ -20,17 +20,11 @@ public class RemovingStarsFromAString2390 {
     public static String removeStars(String s) {
         Stack<Character> charStack = new Stack<>();
         char[] charArray = s.toCharArray();
-        for (char character : charArray) {
-            if (character == '*' && !charStack.isEmpty()) {
-                charStack.pop();
-            } else if (character != '*') {
-                charStack.push(character);
-            }
-        }
+        for (char character : charArray)
+            if (character == '*' && !charStack.isEmpty()) charStack.pop();
+            else if (character != '*') charStack.push(character);
         StringBuilder stringBuilder = new StringBuilder(charStack.size());
-        for (Character character : charStack) {
-            stringBuilder.append(character);
-        }
+        for (Character character : charStack) stringBuilder.append(character);
         return stringBuilder.toString();
     }
 }

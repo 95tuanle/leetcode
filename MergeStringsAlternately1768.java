@@ -16,11 +16,8 @@ public class MergeStringsAlternately1768 {
             merged.append(word1.charAt(i));
             merged.append(word2.charAt(i));
         }
-        if (word1.length() > word2.length()) {
-            merged.append(word1.substring(loop));
-        } else if (word2.length() > word1.length()) {
-            merged.append(word2.substring(loop));
-        }
+        if (word1.length() > word2.length()) merged.append(word1.substring(loop));
+        else if (word2.length() > word1.length()) merged.append(word2.substring(loop));
         return merged.toString();
     }
 }

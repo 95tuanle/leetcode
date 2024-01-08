@@ -21,13 +21,8 @@ public class MaxNumberOfKSumPairs1679 {
                 left++;
                 right--;
                 numOfOperations++;
-            } else {
-                if (k - nums[left] > nums[right]) {
-                    left++;
-                } else {
-                    right--;
-                }
-            }
+            } else if (k - nums[left] > nums[right]) left++;
+            else right--;
         }
         return numOfOperations;
     }

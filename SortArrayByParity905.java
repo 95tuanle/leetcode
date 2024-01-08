@@ -14,9 +14,8 @@ public class SortArrayByParity905 {
         int evenIndex = 0;
         int oddIndex = nums.length - 1;
         while (evenIndex < oddIndex) {
-            if (nums[evenIndex] % 2 == 0) {
-                evenIndex++;
-            } else {
+            if (nums[evenIndex] % 2 == 0) evenIndex++;
+            else {
                 int temp = nums[evenIndex];
                 nums[evenIndex] = nums[oddIndex];
                 nums[oddIndex--] = temp;

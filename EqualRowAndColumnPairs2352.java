@@ -24,9 +24,7 @@ public class EqualRowAndColumnPairs2352 {
         }
         for (int c = 0; c < n; c++) {
             int[] column = new int[n];
-            for (int r = 0; r < n; r++) {
-                column[r] = grid[r][c];
-            }
+            for (int r = 0; r < n; r++) column[r] = grid[r][c];
             count += rows.getOrDefault(Arrays.toString(column), 0);
         }
         return count;

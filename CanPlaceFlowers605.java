@@ -20,9 +20,7 @@ public class CanPlaceFlowers605 {
                     flowerbed[i] = 1;
                 }
             }
-        } else {
-            if (flowerbed[0] == 0) planted++;
-        }
+        } else if (flowerbed[0] == 0) planted++;
         return planted >= n;
     }
 }

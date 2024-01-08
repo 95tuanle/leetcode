@@ -20,15 +20,9 @@ public class FindTheDifferenceOfTwoArrays2215 {
         Set<Integer> uniquesInFirst = new HashSet<>();
         Set<Integer> elementsInSecond = new HashSet<>();
 
-        for (int num : nums2) {
-            elementsInSecond.add(num);
-        }
+        for (int num : nums2) elementsInSecond.add(num);
 
-        for (int num : nums1) {
-            if (!elementsInSecond.contains(num)) {
-                uniquesInFirst.add(num);
-            }
-        }
+        for (int num : nums1) if (!elementsInSecond.contains(num)) uniquesInFirst.add(num);
 
         return new ArrayList<>(uniquesInFirst);
     }

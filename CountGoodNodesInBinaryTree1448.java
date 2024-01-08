@@ -13,9 +13,7 @@ public class CountGoodNodesInBinaryTree1448 {
     }
 
     public static int countGoodNodes(TreeNode node, int max) {
-        if (node == null) {
-            return 0;
-        }
+        if (node == null) return 0;
         int count = 0;
         if (node.val >= max) {
             count++;

@@ -19,9 +19,8 @@ public class DecodeString394 {
         StringBuilder currentString = new StringBuilder();
         int currentCount = 0;
         for (char c : s.toCharArray()) {
-            if (Character.isDigit(c)) {
-                currentCount = currentCount * 10 + (c - '0');
-            } else if (c == '[') {
+            if (Character.isDigit(c)) currentCount = currentCount * 10 + (c - '0');
+            else if (c == '[') {
                 countStack.push(currentCount);
                 stringStack.push(currentString.toString());
                 currentCount = 0;
@@ -32,9 +31,7 @@ public class DecodeString394 {
                 StringBuilder temp = new StringBuilder(previousString);
                 temp.append(String.valueOf(currentString).repeat(Math.max(0, count)));
                 currentString = temp;
-            } else {
-                currentString.append(c);
-            }
+            } else currentString.append(c);
         }
         return currentString.toString();
     }

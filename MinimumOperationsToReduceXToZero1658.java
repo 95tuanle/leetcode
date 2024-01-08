@@ -22,9 +22,7 @@ public class MinimumOperationsToReduceXToZero1658 {
                 currentSum -= nums[left];
                 left++;
             }
-            if (currentSum == target) {
-                maxLength = Math.max(maxLength, right - left + 1);
-            }
+            if (currentSum == target) maxLength = Math.max(maxLength, right - left + 1);
         }
         return maxLength == 0 ? -1 : nums.length - maxLength;
     }

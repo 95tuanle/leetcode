@@ -19,14 +19,11 @@ public class AsteroidCollision735 {
     public static int[] asteroidCollision(int[] asteroids) {
         Stack<Integer> stack = new Stack<>();
         for (int i : asteroids) {
-            while (!stack.isEmpty() && stack.peek() > 0 && stack.peek() < -i) {
+            while (!stack.isEmpty() && stack.peek() > 0 && stack.peek() < -i)
                 stack.pop();  // Destroy smaller asteroid moving left
-            }
-            if (stack.isEmpty() || i > 0 || stack.peek() < 0) {
+            if (stack.isEmpty() || i > 0 || stack.peek() < 0)
                 stack.push(i);  // No collision or current asteroid is moving right
-            } else if (i < 0 && stack.peek() == -i) {
-                stack.pop();  // Both asteroids have equal sizes, destroy both
-            }
+            else if (i < 0 && stack.peek() == -i) stack.pop();  // Both asteroids have equal sizes, destroy both
 //            if (stack.empty()) {
 //                stack.push(i);
 //            } else {

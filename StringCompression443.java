@@ -19,23 +19,17 @@ public class StringCompression443 {
         StringBuilder sb = new StringBuilder();
         char currentChar = chars[0];
         int times = 0;
-        for (char c : chars) {
-            if (c == currentChar) {
-                times++;
-            } else {
+        for (char c : chars)
+            if (c == currentChar) times++;
+            else {
                 sb.append(currentChar).append(times == 1 ? "" : times);
                 currentChar = c;
                 times = 1;
             }
-        }
         sb.append(currentChar).append(times == 1 ? "" : times);
-        for (int i = 0; i < chars.length; i++) {
-            if (i < sb.length()) {
-                chars[i] = sb.charAt(i);
-            } else {
-                chars[i] = ' ';
-            }
-        }
+        for (int i = 0; i < chars.length; i++)
+            if (i < sb.length()) chars[i] = sb.charAt(i);
+            else chars[i] = ' ';
         return sb.length();
 
 //        int i = 0;

@@ -25,9 +25,8 @@ public class LeafSimilarTrees872 {
 
     public static void depthFirstSearch(TreeNode root, List<Integer> leaves) {
         if (root != null) {
-            if (root.left == null && root.right == null) {
-                leaves.add(root.val);
-            } else {
+            if (root.left == null && root.right == null) leaves.add(root.val);
+            else {
                 depthFirstSearch(root.left, leaves);
                 depthFirstSearch(root.right, leaves);
             }

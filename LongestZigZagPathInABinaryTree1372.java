@@ -22,11 +22,8 @@ public class LongestZigZagPathInABinaryTree1372 {
     private static int solve(TreeNode root, boolean goLeft, int count) {
         if (root == null) return count;
         count++;
-        if (goLeft) {
-            return Math.max(solve(root.left, false, count), solve(root.right, true, 0));
-        } else {
-            return Math.max(solve(root.left, false, 0), solve(root.right, true, count));
-        }
+        if (goLeft) return Math.max(solve(root.left, false, count), solve(root.right, true, 0));
+        else return Math.max(solve(root.left, false, 0), solve(root.right, true, count));
     }
 
     public static class TreeNode {

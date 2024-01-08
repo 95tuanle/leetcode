@@ -15,13 +15,11 @@ public class OptimalPartitionOfString2405 {
         ArrayList<String> substrings = new ArrayList<>();
         StringBuilder substring = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
-            if (!substring.toString().contains(String.valueOf(s.charAt(i)))) {
-                substring.append(s.charAt(i));
-            } else {
+            if (substring.toString().contains(String.valueOf(s.charAt(i)))) {
                 substrings.add(substring.toString());
                 substring = new StringBuilder();
-                substring.append(s.charAt(i));
             }
+            substring.append(s.charAt(i));
         }
         substrings.add(substring.toString());
         return substrings.size();

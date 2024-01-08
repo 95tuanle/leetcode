@@ -20,9 +20,7 @@ public class MaximumTwinSumOfALinkedList2130 {
             head = head.next;
         }
         int max = 0;
-        for (int i = 0; i < numberOfNodes / 2; i++) {
-            max = Math.max(max, values[i] + values[numberOfNodes - 1 - i]);
-        }
+        for (int i = 0; i < numberOfNodes / 2; i++) max = Math.max(max, values[i] + values[numberOfNodes - 1 - i]);
         return max;
 
 //        int numberOfNodes = 0;

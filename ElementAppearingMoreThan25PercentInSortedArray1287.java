@@ -10,11 +10,7 @@ public class ElementAppearingMoreThan25PercentInSortedArray1287 {
     public static int findSpecialInteger(int[] arr) {
         int n = arr.length;
         int span = n / 4;
-        for (int i = 0; i < n - span; i++) {
-            if (arr[i] == arr[i + span]) {
-                return arr[i];
-            }
-        }
+        for (int i = 0; i < n - span; i++) if (arr[i] == arr[i + span]) return arr[i];
         return -1;
 
 //        if (arr.length == 1) return arr[0];

@@ -79,8 +79,7 @@ class Solution {
     void dfs(int i) {
         for (int neigh : map.get(i)) {
             if (set.contains(neigh)) continue;
-            if (!connects.contains(neigh + " " + i))
-                rc++;
+            if (!connects.contains(neigh + " " + i)) rc++;
             set.add(neigh);
             dfs(neigh);
 

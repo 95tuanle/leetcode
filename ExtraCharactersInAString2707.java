@@ -20,9 +20,7 @@ public class ExtraCharactersInAString2707 {
             dp[start] = dp[start + 1] + 1;
             for (int end = start; end < n; end++) {
                 var curr = s.substring(start, end + 1);
-                if (dictionarySet.contains(curr)) {
-                    dp[start] = Math.min(dp[start], dp[end + 1]);
-                }
+                if (dictionarySet.contains(curr)) dp[start] = Math.min(dp[start], dp[end + 1]);
             }
         }
         return dp[0];
