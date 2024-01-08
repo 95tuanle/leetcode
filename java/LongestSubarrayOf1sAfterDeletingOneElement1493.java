@@ -1,4 +1,3 @@
-package java;
 
 /*
 Given a binary array nums, you should delete one element from it.

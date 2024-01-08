@@ -1,4 +1,3 @@
-package java;
 
 /*
 Given an m x n binary matrix mat, return the number of special positions in mat.

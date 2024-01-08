@@ -1,4 +1,3 @@
-package java;
 
 /*
 You are given the root of a binary tree.

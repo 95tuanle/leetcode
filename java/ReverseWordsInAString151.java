@@ -1,4 +1,3 @@
-package java;
 
 /*
 Given an input string s, reverse the order of the words.

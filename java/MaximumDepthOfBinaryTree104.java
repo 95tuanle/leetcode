@@ -1,4 +1,3 @@
-package java;
 
 /*
 Given the root of a binary tree, return its maximum depth.
