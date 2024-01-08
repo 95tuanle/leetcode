@@ -1,4 +1,3 @@
-
 /*
 You are given a floating-point number hour, representing the amount of time you have to reach the office. To commute to the office, you must take n trains in sequential order. You are also given an integer array dist of length n, where dist[i] describes the distance (in kilometers) of the ith train ride.
 Each train can only depart at an integer hour, so you may need to wait in between each train ride.

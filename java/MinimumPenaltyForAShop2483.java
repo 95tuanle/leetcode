@@ -1,4 +1,3 @@
-
 /*
 You are given the customer visit log of a shop represented by a 0-indexed string customers consisting only of characters 'N' and 'Y':
 if the ith character is 'Y', it means that customers come at the ith hour

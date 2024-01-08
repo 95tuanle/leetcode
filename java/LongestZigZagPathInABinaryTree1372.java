@@ -1,4 +1,3 @@
-
 /*
 You are given the root of a binary tree.
 A ZigZag path for a binary tree is defined as follow:
