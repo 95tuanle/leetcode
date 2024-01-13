@@ -23,6 +23,7 @@ public class GroupAnagrams49 {
             map.get(keyStr).add(s);
         }
         return new ArrayList<>(map.values());
+
 //        Map<String, int[]> map = new HashMap<>();
 //        for (String str : strs) {
 //            if (map.containsKey(str)) {
