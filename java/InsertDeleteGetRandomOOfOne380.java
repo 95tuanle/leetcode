@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 /*
 Implement the RandomizedSet class:
 RandomizedSet() Initializes the RandomizedSet object.
@@ -8,29 +10,40 @@ You must implement the functions of the class such that each function works in a
 */
 public class InsertDeleteGetRandomOOfOne380 {
     public static void main(String[] args) {
-        RandomizedSet obj = new RandomizedSet();
-        boolean param_1 = obj.insert(1);
-        boolean param_2 = obj.remove(2);
-        int param_3 = obj.getRandom();
-
+        RandomizedSet obj2 = new RandomizedSet();
+        System.out.println(obj2.insert(1));
+        System.out.println(obj2.remove(2));
+        System.out.println(obj2.insert(2));
+        System.out.println(obj2.getRandom());
+        System.out.println(obj2.remove(1));
+        System.out.println(obj2.insert(2));
+        System.out.println(obj2.getRandom());
     }
 }
 
 class RandomizedSet {
+    HashSet<Integer> set;
 
     public RandomizedSet() {
-
+        set = new HashSet<>();
     }
 
     public boolean insert(int val) {
-        return false;
+        if (set.contains(val)) return false;
+        set.add(val);
+        return true;
     }
 
     public boolean remove(int val) {
+        if (set.contains(val)) {
+            set.remove(val);
+            return true;
+        }
         return false;
     }
 
     public int getRandom() {
-        return 0;
+        if (!set.isEmpty()) return (int) set.toArray()[(int) (Math.random() * set.size())];
+        return Integer.MAX_VALUE;
     }
 }
