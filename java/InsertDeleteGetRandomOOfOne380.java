@@ -1,4 +1,4 @@
-import java.util.HashSet;
+import java.util.*;
 
 /*
 Implement the RandomizedSet class:
@@ -22,28 +22,60 @@ public class InsertDeleteGetRandomOOfOne380 {
 }
 
 class RandomizedSet {
-    HashSet<Integer> set;
+    private final Map<Integer, Integer> map;
+    private final List<Integer> list;
+    private final Random rand;
 
     public RandomizedSet() {
-        set = new HashSet<>();
+        map = new HashMap<>();
+        list = new ArrayList<>();
+        rand = new Random();
     }
 
     public boolean insert(int val) {
-        if (set.contains(val)) return false;
-        set.add(val);
+        if (map.containsKey(val)) return false;
+        map.put(val, list.size());
+        list.add(val);
         return true;
     }
 
     public boolean remove(int val) {
-        if (set.contains(val)) {
-            set.remove(val);
-            return true;
-        }
-        return false;
+        if (!map.containsKey(val)) return false;
+        int lastElement = list.getLast();
+        int idx = map.get(val);
+        list.set(idx, lastElement);
+        map.put(lastElement, idx);
+        list.removeLast();
+        map.remove(val);
+        return true;
     }
 
     public int getRandom() {
-        if (!set.isEmpty()) return (int) set.toArray()[(int) (Math.random() * set.size())];
-        return Integer.MAX_VALUE;
+        return list.get(rand.nextInt(list.size()));
     }
+
+//    HashSet<Integer> set;
+//
+//    public RandomizedSet() {
+//        set = new HashSet<>();
+//    }
+//
+//    public boolean insert(int val) {
+//        if (set.contains(val)) return false;
+//        set.add(val);
+//        return true;
+//    }
+//
+//    public boolean remove(int val) {
+//        if (set.contains(val)) {
+//            set.remove(val);
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//    public int getRandom() {
+//        if (!set.isEmpty()) return (int) set.toArray()[(int) (Math.random() * set.size())];
+//        return Integer.MAX_VALUE;
+//    }
 }
