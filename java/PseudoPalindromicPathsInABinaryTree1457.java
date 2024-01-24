@@ -23,7 +23,15 @@ public class PseudoPalindromicPathsInABinaryTree1457 {
     }
 
     public static int pseudoPalindromicPaths(TreeNode root) {
-        return 0;
+        return dfs(root, 0);
+    }
+
+    private static int dfs(TreeNode root, int i) {
+        if (root == null) return 0;
+        i ^= 1 << (root.val - 1);
+        int res = dfs(root.left, i) + dfs(root.right, i);
+        if (root.left == root.right && (i & (i - 1)) == 0) res++;
+        return res;
     }
 
     public static class TreeNode {
