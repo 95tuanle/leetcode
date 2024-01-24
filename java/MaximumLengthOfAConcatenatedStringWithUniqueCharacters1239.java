@@ -1,3 +1,4 @@
+import java.util.HashSet;
 import java.util.List;
 
 /*
@@ -13,25 +14,26 @@ public class MaximumLengthOfAConcatenatedStringWithUniqueCharacters1239 {
     }
 
     public static int maxLength(List<String> arr) {
-        int[] result = new int[1];
-        dfs(arr, 0, "", result);
-        return result[0];
+        return backtracking(arr, 0, new HashSet<>());
     }
 
-    private static void dfs(List<String> arr, int index, String current, int[] result) {
-        if (index == arr.size() && unique(current)) {
-            result[0] = Math.max(result[0], current.length());
-            return;
+    private static int backtracking(List<String> arr, int i, HashSet<Character> cur) {
+        if (i == arr.size()) return cur.size();
+        String string = arr.get(i);
+        if (string.length() != string.chars().distinct().count()) return backtracking(arr, i + 1, cur);
+        char[] chars = string.toCharArray();
+        boolean isOverlapping = false;
+        for (char c : chars)
+            if (cur.contains(c)) {
+                isOverlapping = true;
+                break;
+            }
+        int res = 0;
+        if (!isOverlapping) {
+            for (char c : chars) cur.add(c);
+            res = backtracking(arr, i + 1, cur);
+            for (char c : chars) cur.remove(c);
         }
-        if (index == arr.size()) return;
-        dfs(arr, index + 1, current, result);
-        dfs(arr, index + 1, current + arr.get(index), result);
-    }
-
-    private static boolean unique(String current) {
-        int[] count = new int[26];
-        for (char c : current.toCharArray())
-            if (count[c - 'a']++ > 0) return false;
-        return true;
+        return Math.max(res, backtracking(arr, i + 1, cur));
     }
 }
