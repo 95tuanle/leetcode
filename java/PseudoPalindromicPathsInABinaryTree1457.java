@@ -23,16 +23,29 @@ public class PseudoPalindromicPathsInABinaryTree1457 {
     }
 
     public static int pseudoPalindromicPaths(TreeNode root) {
-        return dfs(root, 0);
+        return dfs(root, new int[10], 0);
+//        return dfs(root, 0);
     }
 
-    private static int dfs(TreeNode root, int i) {
-        if (root == null) return 0;
-        i ^= 1 << (root.val - 1);
-        int res = dfs(root.left, i) + dfs(root.right, i);
-        if (root.left == root.right && (i & (i - 1)) == 0) res++;
+    private static int dfs(TreeNode node, int[] freq, int oddCount) {
+        if (node == null) return 0;
+        freq[node.val]++;
+        if (freq[node.val] % 2 == 1) oddCount++;
+        else oddCount--;
+        int res;
+        if (node.left == null && node.right == null) res = oddCount <= 1 ? 1 : 0;
+        else res = dfs(node.left, freq, oddCount) + dfs(node.right, freq, oddCount);
+        freq[node.val]--;
         return res;
     }
+
+//    private static int dfs(TreeNode node, int path) {
+//        if (node == null) return 0;
+//        path ^= 1 << (node.val - 1);
+//        int pseudoPalindromicPathsCount = dfs(node.left, path) + dfs(node.right, path);
+//        if (node.left == node.right && (path & (path - 1)) == 0) pseudoPalindromicPathsCount++;
+//        return pseudoPalindromicPathsCount;
+//    }
 
     public static class TreeNode {
         int val;
