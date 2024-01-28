@@ -72,16 +72,16 @@ class Solution {
             map.get(c[1]).add(c[0]);
         }
         set.add(0);
-        dfs(0);
+        depthFirstSearch(0);
         return rc;
     }
 
-    void dfs(int i) {
+    void depthFirstSearch(int i) {
         for (int neigh : map.get(i)) {
             if (set.contains(neigh)) continue;
             if (!connects.contains(neigh + " " + i)) rc++;
             set.add(neigh);
-            dfs(neigh);
+            depthFirstSearch(neigh);
 
         }
     }

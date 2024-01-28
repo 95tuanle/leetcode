@@ -23,26 +23,26 @@ public class PseudoPalindromicPathsInABinaryTree1457 {
     }
 
     public static int pseudoPalindromicPaths(TreeNode root) {
-        return dfs(root, new int[10], 0);
-//        return dfs(root, 0);
+        return depthFirstSearch(root, new int[10], 0);
+//        return depthFirstSearch(root, 0);
     }
 
-    private static int dfs(TreeNode node, int[] freq, int oddCount) {
+    private static int depthFirstSearch(TreeNode node, int[] freq, int oddCount) {
         if (node == null) return 0;
         freq[node.val]++;
         if (freq[node.val] % 2 == 1) oddCount++;
         else oddCount--;
         int res;
         if (node.left == null && node.right == null) res = oddCount <= 1 ? 1 : 0;
-        else res = dfs(node.left, freq, oddCount) + dfs(node.right, freq, oddCount);
+        else res = depthFirstSearch(node.left, freq, oddCount) + depthFirstSearch(node.right, freq, oddCount);
         freq[node.val]--;
         return res;
     }
 
-//    private static int dfs(TreeNode node, int path) {
+//    private static int depthFirstSearch(TreeNode node, int path) {
 //        if (node == null) return 0;
 //        path ^= 1 << (node.val - 1);
-//        int pseudoPalindromicPathsCount = dfs(node.left, path) + dfs(node.right, path);
+//        int pseudoPalindromicPathsCount = depthFirstSearch(node.left, path) + depthFirstSearch(node.right, path);
 //        if (node.left == node.right && (path & (path - 1)) == 0) pseudoPalindromicPathsCount++;
 //        return pseudoPalindromicPathsCount;
 //    }
