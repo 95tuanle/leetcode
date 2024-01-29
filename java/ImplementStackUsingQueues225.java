@@ -1,5 +1,4 @@
 import java.util.LinkedList;
-import java.util.Queue;
 
 /*
 Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all the functions of a normal stack (push, top, pop, and empty).
@@ -30,7 +29,7 @@ public class ImplementStackUsingQueues225 {
 }
 
 class MyStack {
-    Queue<Integer> queue;
+    LinkedList<Integer> queue;
 
     public MyStack() {
         this.queue = new LinkedList<>();
