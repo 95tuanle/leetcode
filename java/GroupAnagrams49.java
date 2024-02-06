@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /*
 Given an array of strings strs, group the anagrams together. You can return the answer in any order.
@@ -14,15 +13,15 @@ public class GroupAnagrams49 {
 
     public static List<List<String>> groupAnagrams(String[] strs) {
         if (strs == null || strs.length == 0) return new ArrayList<>();
-        Map<String, List<String>> map = new HashMap<>();
-        for (String s : strs) {
-            char[] ca = new char[26];
-            for (char c : s.toCharArray()) ca[c - 'a']++;
-            String keyStr = String.valueOf(ca);
-            if (!map.containsKey(keyStr)) map.put(keyStr, new ArrayList<>());
-            map.get(keyStr).add(s);
+        HashMap<String, List<String>> hashMap = new HashMap<>();
+        for (String string : strs) {
+            char[] chars = new char[26];
+            for (char c : string.toCharArray()) chars[c - 'a']++;
+            String keyString = String.valueOf(chars);
+            if (!hashMap.containsKey(keyString)) hashMap.put(keyString, new ArrayList<>());
+            hashMap.get(keyString).add(string);
         }
-        return new ArrayList<>(map.values());
+        return new ArrayList<>(hashMap.values());
 
 //        Map<String, int[]> map = new HashMap<>();
 //        for (String str : strs) {
