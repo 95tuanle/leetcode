@@ -40,4 +40,20 @@ class SmallestInfiniteSet {
             if (popIndex > num) popIndex = num;
         }
     }
+
+//    PriorityQueue<Integer> pq;
+//
+//    public SmallestInfiniteSet() {
+//        pq = new PriorityQueue<>();
+//        for (int i = 1; i <= 1000; i++) pq.add(i);
+//    }
+//
+//    public int popSmallest() {
+//        if (pq.isEmpty()) return -1;
+//        return pq.poll();
+//    }
+//
+//    public void addBack(int num) {
+//        if (!pq.contains(num)) pq.add(num);
+//    }
 }
