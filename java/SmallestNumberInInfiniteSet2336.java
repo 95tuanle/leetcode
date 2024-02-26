@@ -35,8 +35,9 @@ class SmallestInfiniteSet {
     }
 
     public void addBack(int num) {
-        if (!isPopped[num]) return;
-        isPopped[num] = false;
-        if (popIndex > num) popIndex = num;
+        if (isPopped[num]) {
+            isPopped[num] = false;
+            if (popIndex > num) popIndex = num;
+        }
     }
 }
