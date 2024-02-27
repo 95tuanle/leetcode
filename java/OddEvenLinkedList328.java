@@ -14,8 +14,7 @@ public class OddEvenLinkedList328 {
         node1.next = node2;
         ListNode node3 = new ListNode(4);
         node2.next = node3;
-        ListNode node4 = new ListNode(5);
-        node3.next = node4;
+        node3.next = new ListNode(5);
         ListNode node = head;
         while (node != null) {
             System.out.print(node.val + " ");
