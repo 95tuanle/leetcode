@@ -25,8 +25,8 @@ public class DeleteTheMiddleNodeOfALinkedList2095 {
         }
     }
 
-    public static ListNode deleteMiddle(ListNode head) {
-        if (head.next == null) return null;
+    public static void deleteMiddle(ListNode head) {
+        if (head.next == null) return;
         int count = 0;
         ListNode node = head;
         while (node != null) {
@@ -36,7 +36,6 @@ public class DeleteTheMiddleNodeOfALinkedList2095 {
         node = head;
         for (int i = 0; i < count / 2 - 1; i++) node = node.next;
         node.next = node.next.next;
-        return head;
     }
 
     public static class ListNode {

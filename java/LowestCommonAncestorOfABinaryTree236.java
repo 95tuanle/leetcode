@@ -31,7 +31,7 @@ public class LowestCommonAncestorOfABinaryTree236 {
     }
 
     public static class TreeNode {
-        int val;
+        final int val;
         TreeNode left;
         TreeNode right;
 

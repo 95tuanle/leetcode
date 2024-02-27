@@ -19,7 +19,7 @@ public class NumberOfRecentCalls933 {
 }
 
 class RecentCounter {
-    Queue<Integer> queue;
+    final Queue<Integer> queue;
 
     public RecentCounter() {
         this.queue = new LinkedList<>();

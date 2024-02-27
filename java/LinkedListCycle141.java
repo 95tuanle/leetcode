@@ -36,7 +36,7 @@ public class LinkedListCycle141 {
     }
 
     public static class ListNode {
-        int val;
+        final int val;
         ListNode next;
 
         ListNode(int x) {

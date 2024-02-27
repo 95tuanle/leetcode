@@ -29,8 +29,8 @@ public class OddEvenLinkedList328 {
         }
     }
 
-    public static ListNode oddEvenList(ListNode head) {
-        if (head == null) return null;
+    public static void oddEvenList(ListNode head) {
+        if (head == null) return;
         ListNode odd = head, even = head.next, evenHead = even;
         while (odd.next != null && even.next != null) {
             odd.next = odd.next.next;
@@ -39,7 +39,6 @@ public class OddEvenLinkedList328 {
             even = even.next;
         }
         odd.next = evenHead;
-        return head;
     }
 
     public static class ListNode {

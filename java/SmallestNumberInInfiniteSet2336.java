@@ -20,7 +20,7 @@ public class SmallestNumberInInfiniteSet2336 {
 }
 
 class SmallestInfiniteSet {
-    boolean[] isPopped;
+    final boolean[] isPopped;
     int popIndex;
 
     public SmallestInfiniteSet() {

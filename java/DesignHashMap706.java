@@ -28,7 +28,7 @@ public class DesignHashMap706 {
 }
 
 class MyHashMap {
-    int[] data;
+    final int[] data;
 
     public MyHashMap() {
         data = new int[1000001];

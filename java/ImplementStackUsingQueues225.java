@@ -29,7 +29,7 @@ public class ImplementStackUsingQueues225 {
 }
 
 class MyStack {
-    LinkedList<Integer> queue;
+    final LinkedList<Integer> queue;
 
     public MyStack() {
         this.queue = new LinkedList<>();

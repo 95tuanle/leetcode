@@ -24,7 +24,8 @@ public class ImplementQueueUsingStacks232 {
 }
 
 class MyQueue {
-    Stack<Integer> main, sub;
+    final Stack<Integer> main;
+    final Stack<Integer> sub;
 
     public MyQueue() {
         this.main = new Stack<>();

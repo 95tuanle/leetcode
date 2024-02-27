@@ -68,7 +68,7 @@ public class PathSumIII437 {
         }
         count += solve(root.left, targetSum, path);
         count += solve(root.right, targetSum, path);
-        path.remove(path.size() - 1);
+        path.removeLast();
         return count;
     }
 
