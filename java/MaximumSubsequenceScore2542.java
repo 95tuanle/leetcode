@@ -34,11 +34,11 @@ public class MaximumSubsequenceScore2542 {
         Arrays.sort(pairs, (a, b) -> b[0] - a[0]);
         PriorityQueue<Integer> pq = new PriorityQueue<>(k, Comparator.comparingInt(a -> a));
         long result = 0, sum = 0;
-        for (int[] es : pairs) {
-            pq.add(es[1]);
-            sum = (sum + es[1]);
+        for (int[] pair : pairs) {
+            pq.add(pair[1]);
+            sum = (sum + pair[1]);
             if (pq.size() > k) sum -= pq.poll();
-            if (pq.size() == k) result = Math.max(result, (sum * es[0]));
+            if (pq.size() == k) result = Math.max(result, (sum * pair[0]));
         }
         return result;
     }
