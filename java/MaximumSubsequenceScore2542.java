@@ -28,9 +28,8 @@ public class MaximumSubsequenceScore2542 {
     }
 
     public static long maxScore(int[] nums1, int[] nums2, int k) {
-        int n = nums1.length;
-        int[][] pairs = new int[n][2];
-        for (int i = 0; i < n; ++i) pairs[i] = new int[]{nums2[i], nums1[i]};
+        int[][] pairs = new int[nums1.length][2];
+        for (int i = 0; i < nums1.length; i++) pairs[i] = new int[]{nums2[i], nums1[i]};
         Arrays.sort(pairs, (a, b) -> b[0] - a[0]);
         PriorityQueue<Integer> pq = new PriorityQueue<>(k, Comparator.comparingInt(a -> a));
         long result = 0, sum = 0;
