@@ -37,7 +37,7 @@ public class MaximumSubsequenceScore2542 {
             pq.add(pair[1]);
             sum += pair[1];
             if (pq.size() > k) sum -= pq.poll();
-            if (pq.size() == k) result = Math.max(result, (sum * pair[0]));
+            if (pq.size() == k) result = Math.max(result, sum * pair[0]);
         }
         return result;
     }
