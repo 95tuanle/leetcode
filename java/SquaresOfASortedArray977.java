@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /*
 Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
 */
@@ -11,8 +9,23 @@ public class SquaresOfASortedArray977 {
     }
 
     public static int[] sortedSquares(int[] nums) {
-        for (int i = 0; i < nums.length; i++) nums[i] *= nums[i];
-        Arrays.sort(nums);
-        return nums;
+        int[] result = new int[nums.length];
+        int left = 0, right = nums.length - 1, index = nums.length - 1;
+        while (left <= right) {
+            int leftSquare = nums[left] * nums[left];
+            int rightSquare = nums[right] * nums[right];
+            if (leftSquare < rightSquare) {
+                result[index--] = rightSquare;
+                right--;
+            } else {
+                result[index--] = leftSquare;
+                left++;
+            }
+        }
+        return result;
+
+//        for (int i = 0; i < nums.length; i++) nums[i] *= nums[i];
+//        Arrays.sort(nums);
+//        return nums;
     }
 }
