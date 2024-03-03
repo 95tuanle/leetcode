@@ -29,21 +29,31 @@ public class RemoveNthNodeFromEndOfList19 {
     }
 
     public static ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode node = head, target = null, prev = null;
-        int counter = 1;
-        while (node != null) {
-            if (counter == n) target = head;
-            else if (counter > n) {
-                target = target.next;
-                if (counter == n + 1) prev = head;
-                else prev = prev.next;
-            }
-            node = node.next;
-            counter++;
+        ListNode fast = head, slow = head;
+        for (int i = 0; i < n; i++) fast = fast.next;
+        if (fast == null) return head.next;
+        while (fast.next != null) {
+            fast = fast.next;
+            slow = slow.next;
         }
-        if (prev == null) return head.next;
-        else prev.next = target.next;
+        slow.next = slow.next.next;
         return head;
+
+//        ListNode node = head, target = null, prev = null;
+//        int counter = 1;
+//        while (node != null) {
+//            if (counter == n) target = head;
+//            else if (counter > n) {
+//                target = target.next;
+//                if (counter == n + 1) prev = head;
+//                else prev = prev.next;
+//            }
+//            node = node.next;
+//            counter++;
+//        }
+//        if (prev == null) return head.next;
+//        else prev.next = target.next;
+//        return head;
     }
 
     public static class ListNode {
