@@ -10,7 +10,6 @@ public class TwoSum1 {
         int[] nums = {2, 7, 11, 15};
         int target = 9;
         int[] result = twoSum(nums, target);
-        assert result != null;
         for (int i : result) {
             System.out.print(i + " ");
         }
@@ -18,7 +17,6 @@ public class TwoSum1 {
         int[] nums2 = {3, 2, 4};
         int target2 = 6;
         int[] result2 = twoSum(nums2, target2);
-        assert result2 != null;
         for (int i : result2) {
             System.out.print(i + " ");
         }
@@ -26,7 +24,6 @@ public class TwoSum1 {
         int[] nums3 = {3, 3};
         int target3 = 6;
         int[] result3 = twoSum(nums3, target3);
-        assert result3 != null;
         for (int i : result3) {
             System.out.print(i + " ");
         }

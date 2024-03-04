@@ -46,7 +46,6 @@ public class MaximumLevelSumOfABinaryTree1161 {
 //            int sum = 0;
 //            for (int i = 0; i < sizeOfLevel; i++) {
 //                TreeNode node = queue.poll();
-//                assert node != null;
 //                sum += node.val;
 //                if (node.left != null) queue.offer(node.left);
 //                if (node.right != null) queue.offer(node.right);

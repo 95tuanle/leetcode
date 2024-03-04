@@ -52,7 +52,6 @@ public class NearestExitFromEntranceInMaze1926 {
 //            int size = queue.size();
 //            for (int i = 0; i < size; i++) {
 //                int[] current = queue.poll();
-//                assert current != null;
 //                int x = current[0], y = current[1];
 //                if ((x == 0 || x == m - 1 || y == 0 || y == n - 1) && (x != entrance[0] || y != entrance[1]))
 //                    return steps;

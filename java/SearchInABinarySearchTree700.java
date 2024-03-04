@@ -14,7 +14,6 @@ public class SearchInABinarySearchTree700 {
         left.left = leftLeft;
         left.right = leftRight;
         TreeNode result = searchBST(root, 2);
-        assert result != null;
         System.out.println(result.val);
     }
 

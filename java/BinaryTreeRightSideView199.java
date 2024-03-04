@@ -37,7 +37,6 @@ public class BinaryTreeRightSideView199 {
 //            int sizeOfLevel = queue.size();
 //            for (int i = 0; i < sizeOfLevel; i++) {
 //                TreeNode currentNode = queue.poll();
-//                assert currentNode != null;
 //                if (i == sizeOfLevel - 1) result.add(currentNode.val);
 //                if (currentNode.left != null) queue.offer(currentNode.left);
 //                if (currentNode.right != null) queue.offer(currentNode.right);

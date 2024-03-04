@@ -72,7 +72,6 @@ public class EvenOddTree1609 {
 //            int size = queue.size();
 //            for (int i = 0; i < size; i++) {
 //                TreeNode currentNode = queue.poll();
-//                assert currentNode != null;
 //                if (currentNode.left != null) {
 //                    if (isPreviouslyOdd) {
 //                        if (currentNode.left.val % 2 != 0 || currentNode.left.val >= currentNumber) return false;
