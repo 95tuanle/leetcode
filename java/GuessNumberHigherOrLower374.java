@@ -39,7 +39,6 @@ class Solution extends GuessGame {
     }
 }
 
-
 class GuessGame {
     int pick;
 
