@@ -24,9 +24,7 @@ public class ReverseLinkedList206 {
     }
 
     public static ListNode reverseList(ListNode head) {
-        if (head == null) return null;
-        ListNode previous = null;
-        ListNode current = head;
+        ListNode previous = null, current = head;
         while (head != null) {
             head = head.next;
             current.next = previous;
