@@ -24,12 +24,12 @@ public class ReverseLinkedList206 {
     }
 
     public static ListNode reverseList(ListNode head) {
-        ListNode previous = null, current = head;
+        ListNode previous = null;
         while (head != null) {
-            head = head.next;
-            current.next = previous;
-            previous = current;
-            current = head;
+            ListNode nextNode = head.next;
+            head.next = previous;
+            previous = head;
+            head = nextNode;
         }
         return previous;
 
