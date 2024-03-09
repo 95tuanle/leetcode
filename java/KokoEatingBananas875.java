@@ -17,6 +17,10 @@ public class KokoEatingBananas875 {
         int[] piles3 = {30, 11, 23, 4, 20};
         int h3 = 6;
         System.out.println(minEatingSpeed(piles3, h3));
+
+        int[] piles4 = {805306368, 805306368, 805306368};
+        int h4 = 1000000000;
+        System.out.println(minEatingSpeed(piles4, h4));
     }
 
     public static int minEatingSpeed(int[] piles, int h) {
@@ -26,8 +30,8 @@ public class KokoEatingBananas875 {
         int result = max, min = 1;
         while (min <= max) {
             int mid = min + (max - min) / 2;
-            int hour = 0;
-            for (int pile : piles) hour += Math.ceil((double) pile / mid);
+            long hour = 0;
+            for (int pile : piles) hour += (pile + mid - 1) / mid;
             if (hour > h) min = mid + 1;
             else {
                 result = Math.min(mid, result);
