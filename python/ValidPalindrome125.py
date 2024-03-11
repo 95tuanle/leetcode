@@ -3,8 +3,14 @@
 # numbers. Given a string s, return true if it is a palindrome, or false otherwise.
 
 def is_palindrome(s: str) -> bool:
-    s = "".join(e for e in s if e.isalnum()).lower()
-    return s == s[::-1]
+    new_str = ""
+    for char in s:
+        if char.isalnum():
+            new_str += char.lower()
+    return new_str == new_str[::-1]
+
+    # s = "".join(e for e in s if e.isalnum()).lower()
+    # return s == s[::-1]
 
     # left, right = 0, len(s) - 1
     # while left <= right:
