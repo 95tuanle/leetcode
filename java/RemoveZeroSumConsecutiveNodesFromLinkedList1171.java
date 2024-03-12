@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /*
 Given the head of a linked list, we repeatedly delete consecutive sequences of nodes that sum to 0 until there are no such sequences.
 After doing so, return the head of the final linked list.  You may return any such answer.
@@ -18,18 +20,38 @@ public class RemoveZeroSumConsecutiveNodesFromLinkedList1171 {
     }
 
     public static ListNode removeZeroSumSublists(ListNode head) {
-        ListNode front = new ListNode(0, head), start = front;
-        while (start != null) {
-            int prefixSum = 0;
-            ListNode end = start.next;
-            while (end != null) {
-                prefixSum += end.val;
-                if (prefixSum == 0) start.next = end.next;
-                end = end.next;
-            }
-            start = start.next;
+        ListNode front = new ListNode(0, head), current = front;
+        int prefixSum = 0;
+        HashMap<Integer, ListNode> hashMap = new HashMap<>();
+        while (current != null) {
+            prefixSum += current.val;
+            if (hashMap.containsKey(prefixSum)) {
+                ListNode previous = hashMap.get(prefixSum);
+                current = previous.next;
+                int currentPrefixSum = prefixSum + current.val;
+                while (currentPrefixSum != prefixSum) {
+                    hashMap.remove(currentPrefixSum);
+                    current = current.next;
+                    currentPrefixSum += current.val;
+                }
+                previous.next = current.next;
+            } else hashMap.put(prefixSum, current);
+            current = current.next;
         }
         return front.next;
+
+//        ListNode front = new ListNode(0, head), start = front;
+//        while (start != null) {
+//            int prefixSum = 0;
+//            ListNode end = start.next;
+//            while (end != null) {
+//                prefixSum += end.val;
+//                if (prefixSum == 0) start.next = end.next;
+//                end = end.next;
+//            }
+//            start = start.next;
+//        }
+//        return front.next;
     }
 
     public static class ListNode {
