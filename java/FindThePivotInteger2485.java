@@ -11,16 +11,27 @@ public class FindThePivotInteger2485 {
     }
 
     public static int pivotInteger(int n) {
+        if (n == 1) return n;
         int sum1 = n * (n + 1) / 2;
         int sum2 = 0;
         for (int i = 1; i <= n; i++) {
             sum2 += i;
-            sum1 -= i;
+            sum1 -= i - 1;
             if (sum2 == sum1) return i;
             else if (sum2 > sum1) break;
         }
         return -1;
 
+//        if (n == 1) return n;
+//        int left = 1, sumLeft = left, sumRight = n;
+//        while (left < n) {
+//            if (sumLeft < sumRight) sumLeft += ++left;
+//            else sumRight += --n;
+//            if (sumLeft == sumRight && left + 1 == n - 1) return left + 1;
+//        }
+//        return -1;
+
+//        if (n == 1) return n;
 //        int sum1 = 0;
 //        for (int i = 1; i <= n; i++) sum1 += i;
 //        int sum2 = 0;
