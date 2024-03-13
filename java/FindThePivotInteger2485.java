@@ -11,15 +11,25 @@ public class FindThePivotInteger2485 {
     }
 
     public static int pivotInteger(int n) {
-        int sum1 = 0;
-        for (int i = 1; i <= n; i++) sum1 += i;
+        int sum1 = n * (n + 1) / 2;
         int sum2 = 0;
         for (int i = 1; i <= n; i++) {
             sum2 += i;
-            sum1 -= i - 1;
-            if (sum1 == sum2) return i;
-            else if (sum1 < sum2) break;
+            sum1 -= i;
+            if (sum2 == sum1) return i;
+            else if (sum2 > sum1) break;
         }
         return -1;
+
+//        int sum1 = 0;
+//        for (int i = 1; i <= n; i++) sum1 += i;
+//        int sum2 = 0;
+//        for (int i = 1; i <= n; i++) {
+//            sum2 += i;
+//            sum1 -= i - 1;
+//            if (sum1 == sum2) return i;
+//            else if (sum1 < sum2) break;
+//        }
+//        return -1;
     }
 }
