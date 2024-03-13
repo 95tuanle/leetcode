@@ -27,6 +27,20 @@ public class LetterCombinationsOfAPhoneNumber17 {
         hashMap.put('9', "wxyz");
         backtrack(digits, hashMap, result, 0, new StringBuilder());
         return result;
+
+//        if (digits == null || digits.isEmpty()) return new ArrayList<>();
+//        String[] mapping = {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+//        LinkedList<String> queue = new LinkedList<>();
+//        queue.add("");
+//        for (int i = 0; i < digits.length(); i++) {
+//            int x = Character.getNumericValue(digits.charAt(i));
+//            while (queue.peek().length() == i) {
+//                String t = queue.remove();
+//                for (char s : mapping[x].toCharArray())
+//                    queue.add(t + s);
+//            }
+//        }
+//        return queue;
     }
 
     private static void backtrack(String digits, HashMap<Character, String> hashMap, List<String> result, int i, StringBuilder stringBuilder) {
