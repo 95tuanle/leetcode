@@ -6,13 +6,13 @@ from typing import List
 
 def product_except_self(self, nums: List[int]) -> List[int]:
     result, product = [], 1
-    for index, value in enumerate(nums):
+    for num in nums:
         result.append(product)
-        product *= value
+        product *= num
     product = 1
-    for index, value in enumerate(reversed(nums)):
-        result[-(index + 1)] *= product
-        product *= value
+    for i in range(len(nums) - 1, -1, -1):
+        result[i] *= product
+        product *= nums[i]
     return result
 
 
