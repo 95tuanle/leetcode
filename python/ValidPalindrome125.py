@@ -2,7 +2,7 @@
 # non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and
 # numbers. Given a string s, return true if it is a palindrome, or false otherwise.
 
-def is_palindrome(self, s: str) -> bool:
+def is_palindrome(s: str) -> bool:
     new_str = ""
     for char in s:
         if char.isalnum():
@@ -27,6 +27,6 @@ def is_palindrome(self, s: str) -> bool:
 
 
 if __name__ == '__main__':
-    print(is_palindrome(None, 'A man, a plan, a canal: Panama'))
-    print(is_palindrome(None, 'race a car'))
-    print(is_palindrome(None, ' '))
+    print(is_palindrome('A man, a plan, a canal: Panama'))
+    print(is_palindrome('race a car'))
+    print(is_palindrome(' '))

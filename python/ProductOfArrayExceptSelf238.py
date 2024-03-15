@@ -4,7 +4,7 @@
 from typing import List
 
 
-def product_except_self(self, nums: List[int]) -> List[int]:
+def product_except_self(nums: List[int]) -> List[int]:
     result, product = [], 1
     for num in nums:
         result.append(product)
@@ -17,17 +17,17 @@ def product_except_self(self, nums: List[int]) -> List[int]:
 
 
 if __name__ == "__main__":
-    print(product_except_self(None, [1, 2, 3, 4]))
-    print(product_except_self(None, [-1, 1, 0, -3, 3]))
-    print(product_except_self(None, [1, 2, 3, 4, 5]))
-    print(product_except_self(None, [1, 2, 3, 4, 5, 6]))
-    print(product_except_self(None, [1, 2, 3, 4, 5, 6, 7]))
-    print(product_except_self(None, [1, 2, 3, 4, 5, 6, 7, 8]))
-    print(product_except_self(None, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
-    print(product_except_self(None, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
-    print(product_except_self(None, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]))
-    print(product_except_self(None, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]))
-    print(product_except_self(None, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]))
-    print(product_except_self(None, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]))
-    print(product_except_self(None, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]))
-    print(product_except_self(None, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]))
+    print(product_except_self([1, 2, 3, 4]))
+    print(product_except_self([-1, 1, 0, -3, 3]))
+    print(product_except_self([1, 2, 3, 4, 5]))
+    print(product_except_self([1, 2, 3, 4, 5, 6]))
+    print(product_except_self([1, 2, 3, 4, 5, 6, 7]))
+    print(product_except_self([1, 2, 3, 4, 5, 6, 7, 8]))
+    print(product_except_self([1, 2, 3, 4, 5, 6, 7, 8, 9]))
+    print(product_except_self([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+    print(product_except_self([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]))
+    print(product_except_self([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]))
+    print(product_except_self([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]))
+    print(product_except_self([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]))
+    print(product_except_self([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]))
+    print(product_except_self([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]))
