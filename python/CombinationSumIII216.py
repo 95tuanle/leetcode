@@ -10,13 +10,13 @@ def combinationSum3(k: int, n: int) -> List[List[int]]:
             return
         if current_k == 0 and current_n == 0:
             result.append(current[:])
-        else:
-            for i in range(start, 10):
-                if i > current_n:
-                    break
-                current.append(i)
-                backtracking(i + 1, current_k - 1, current_n - i, current)
-                current.pop()
+            return
+        for i in range(start, 10):
+            if i > current_n:
+                break
+            current.append(i)
+            backtracking(i + 1, current_k - 1, current_n - i, current)
+            current.pop()
 
     result = []
     backtracking(1, k, n, [])
