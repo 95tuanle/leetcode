@@ -19,19 +19,31 @@ public class InsertInterval57 {
 
     public static int[][] insert(int[][] intervals, int[] newInterval) {
         ArrayList<int[]> result = new ArrayList<>();
-        for (int[] interval : intervals) {
-            if (newInterval == null || interval[1] < newInterval[0]) result.add(interval);
-            else if (interval[0] > newInterval[1]) {
-                result.add(newInterval);
-                result.add(interval);
-                newInterval = null;
-            } else {
-                newInterval[0] = Math.min(interval[0], newInterval[0]);
-                newInterval[1] = Math.max(interval[1], newInterval[1]);
-            }
+        int i = 0;
+        while (i < intervals.length && intervals[i][1] < newInterval[0]) result.add(intervals[i++]);
+        while (i < intervals.length && intervals[i][0] <= newInterval[1]) {
+            newInterval[0] = Math.min(intervals[i][0], newInterval[0]);
+            newInterval[1] = Math.max(intervals[i][1], newInterval[1]);
+            i++;
         }
-        if (newInterval != null) result.add(newInterval);
+        result.add(newInterval);
+        while (i < intervals.length) result.add(intervals[i++]);
         return result.toArray(new int[result.size()][]);
+
+//        ArrayList<int[]> result = new ArrayList<>();
+//        for (int[] interval : intervals) {
+//            if (newInterval == null || interval[1] < newInterval[0]) result.add(interval);
+//            else if (interval[0] > newInterval[1]) {
+//                result.add(newInterval);
+//                result.add(interval);
+//                newInterval = null;
+//            } else {
+//                newInterval[0] = Math.min(interval[0], newInterval[0]);
+//                newInterval[1] = Math.max(interval[1], newInterval[1]);
+//            }
+//        }
+//        if (newInterval != null) result.add(newInterval);
+//        return result.toArray(new int[result.size()][]);
 
 //        if (intervals.length == 0) return new int[][]{newInterval};
 //        int n = intervals.length, target = newInterval[0], left = 0, right = n - 1;
