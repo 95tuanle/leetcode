@@ -2,7 +2,7 @@
 from typing import List
 
 
-def find_max_length(nums: List[int]) -> int:
+def findMaxLength(nums: List[int]) -> int:
     count, result = 0, 0
     hash_map = {0: -1}
     for i, v in enumerate(nums):
@@ -15,7 +15,7 @@ def find_max_length(nums: List[int]) -> int:
 
 
 if __name__ == "__main__":
-    print(find_max_length([0, 1]))
-    print(find_max_length([0, 1, 0]))
-    print(find_max_length([0, 0, 1, 0, 0, 0, 1, 1]))
-    print(find_max_length([0, 1, 0, 1]))
+    print(findMaxLength([0, 1]))
+    print(findMaxLength([0, 1, 0]))
+    print(findMaxLength([0, 0, 1, 0, 0, 0, 1, 1]))
+    print(findMaxLength([0, 1, 0, 1]))

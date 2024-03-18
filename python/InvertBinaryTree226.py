@@ -9,10 +9,10 @@ class TreeNode:
         self.right = right
 
 
-def invert_tree(root: Optional[TreeNode]) -> Optional[TreeNode]:
+def invertTree(root: Optional[TreeNode]) -> Optional[TreeNode]:
     if not root:
         return
-    root.left, root.right = invert_tree(root.right), invert_tree(root.left)
+    root.left, root.right = invertTree(root.right), invertTree(root.left)
     return root
 
     # if root:
@@ -36,4 +36,4 @@ def print_tree(root: Optional[TreeNode], indent: str = ''):
 if __name__ == "__main__":
     tree_root = TreeNode(4, TreeNode(2, TreeNode(1), TreeNode(3)), TreeNode(7, TreeNode(6), TreeNode(9)))
     print_tree(tree_root)
-    print_tree(invert_tree(tree_root))
+    print_tree(invertTree(tree_root))

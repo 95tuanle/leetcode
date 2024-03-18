@@ -4,7 +4,7 @@
 from typing import List
 
 
-def letter_combinations(digits: str) -> List[str]:
+def letterCombinations(digits: str) -> List[str]:
     result = []
     phone = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl", "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
 
@@ -21,12 +21,12 @@ def letter_combinations(digits: str) -> List[str]:
 
 
 if __name__ == "__main__":
-    print(letter_combinations("23"))
-    print(letter_combinations(""))
-    print(letter_combinations("2"))
-    print(letter_combinations("234"))
-    print(letter_combinations("2345"))
-    print(letter_combinations("23456"))
-    print(letter_combinations("234567"))
-    print(letter_combinations("2345678"))
-    print(letter_combinations("23456789"))
+    print(letterCombinations("23"))
+    print(letterCombinations(""))
+    print(letterCombinations("2"))
+    print(letterCombinations("234"))
+    print(letterCombinations("2345"))
+    print(letterCombinations("23456"))
+    print(letterCombinations("234567"))
+    print(letterCombinations("2345678"))
+    print(letterCombinations("23456789"))
