@@ -23,6 +23,7 @@ public class CombinationSumIII216 {
     }
 
     private static void backtracking(int start, int k, int n, List<List<Integer>> result, ArrayList<Integer> current) {
+        if (k < 0 || n < 0) return;
         if (k == 0 && n == 0) result.add(new ArrayList<>(current));
         else for (int i = start; i <= 9; i++) {
             current.add(i);
