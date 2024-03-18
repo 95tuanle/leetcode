@@ -18,22 +18,37 @@ public class InsertInterval57 {
     }
 
     public static int[][] insert(int[][] intervals, int[] newInterval) {
-        if (intervals.length == 0) return new int[][]{newInterval};
-        int n = intervals.length, target = newInterval[0], left = 0, right = n - 1;
-        while (left <= right) {
-            int mid = (left + right) / 2;
-            if (intervals[mid][0] < target) left = mid + 1;
-            else right = mid - 1;
-        }
-        ArrayList<int[]> arrayList = new ArrayList<>();
-        for (int i = 0; i < left; i++) arrayList.add(intervals[i]);
-        arrayList.add(newInterval);
-        for (int i = left; i < n; i++) arrayList.add(intervals[i]);
         ArrayList<int[]> result = new ArrayList<>();
-        for (int[] interval : arrayList) {
-            if (result.isEmpty() || result.getLast()[1] < interval[0]) result.add(interval);
-            else result.getLast()[1] = Math.max(result.getLast()[1], interval[1]);
+        for (int[] interval : intervals) {
+            if (newInterval == null || interval[1] < newInterval[0]) result.add(interval);
+            else if (interval[0] > newInterval[1]) {
+                result.add(newInterval);
+                result.add(interval);
+                newInterval = null;
+            } else {
+                newInterval[0] = Math.min(interval[0], newInterval[0]);
+                newInterval[1] = Math.max(interval[1], newInterval[1]);
+            }
         }
+        if (newInterval != null) result.add(newInterval);
         return result.toArray(new int[result.size()][]);
+
+//        if (intervals.length == 0) return new int[][]{newInterval};
+//        int n = intervals.length, target = newInterval[0], left = 0, right = n - 1;
+//        while (left <= right) {
+//            int mid = (left + right) / 2;
+//            if (intervals[mid][0] < target) left = mid + 1;
+//            else right = mid - 1;
+//        }
+//        ArrayList<int[]> arrayList = new ArrayList<>();
+//        for (int i = 0; i < left; i++) arrayList.add(intervals[i]);
+//        arrayList.add(newInterval);
+//        for (int i = left; i < n; i++) arrayList.add(intervals[i]);
+//        ArrayList<int[]> result = new ArrayList<>();
+//        for (int[] interval : arrayList) {
+//            if (result.isEmpty() || result.getLast()[1] < interval[0]) result.add(interval);
+//            else result.getLast()[1] = Math.max(result.getLast()[1], interval[1]);
+//        }
+//        return result.toArray(new int[result.size()][]);
     }
 }
