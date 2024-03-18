@@ -16,15 +16,24 @@ public class MinimumNumberOfArrowsToBurstBalloons452 {
     }
 
     public static int findMinArrowShots(int[][] points) {
-        Arrays.sort(points, Comparator.comparingInt(point -> point[0]));
-        int result = points.length;
-        int[] previous = points[0];
+        Arrays.sort(points, Comparator.comparingInt(point -> point[1]));
+        int result = 1, end = points[0][1];
         for (int i = 1; i < points.length; i++)
-            if (previous[1] >= points[i][0]) {
-                result--;
-                previous[0] = points[i][0];
-                previous[1] = Math.min(previous[1], points[i][1]);
-            } else previous = points[i];
+            if (points[i][0] > end) {
+                result++;
+                end = points[i][1];
+            }
         return result;
+
+//        Arrays.sort(points, Comparator.comparingInt(point -> point[0]));
+//        int result = points.length;
+//        int[] previous = points[0];
+//        for (int i = 1; i < points.length; i++)
+//            if (previous[1] >= points[i][0]) {
+//                result--;
+//                previous[0] = points[i][0];
+//                previous[1] = Math.min(previous[1], points[i][1]);
+//            } else previous = points[i];
+//        return result;
     }
 }
