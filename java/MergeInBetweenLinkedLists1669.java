@@ -22,8 +22,8 @@ public class MergeInBetweenLinkedLists1669 {
         ListNode head = current;
         for (; i <= b; i++) current = current.next;
         head.next = list2;
-        while (head.next != null) head = head.next;
-        head.next = current;
+        while (list2.next != null) list2 = list2.next;
+        list2.next = current;
         return list1;
     }
 
