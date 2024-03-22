@@ -1,0 +1,74 @@
+# Given the head of a singly linked list, return true if it is a palindrome or false otherwise.
+from typing import Optional
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+def isPalindrome(head: Optional[ListNode]) -> bool:
+    slow, fast = head, head
+    while fast and fast.next:
+        slow, fast = slow.next, fast.next.next
+    end = None
+    while slow:
+        slow.next, end, slow = end, slow, slow.next
+    while head and end:
+        if head.val != end.val:
+            return False
+        head, end = head.next, end.next
+    return True
+
+
+if __name__ == "__main__":
+    head = ListNode(1)
+    head.next = ListNode(2)
+    head.next.next = ListNode(3)
+    head.next.next.next = ListNode(2)
+    head.next.next.next.next = ListNode(1)
+    print(isPalindrome(head))
+    head = ListNode(1)
+    head.next = ListNode(2)
+    head.next.next = ListNode(3)
+    head.next.next.next = ListNode(4)
+    head.next.next.next.next = ListNode(5)
+    print(isPalindrome(head))
+    head = ListNode(1)
+    head.next = ListNode(2)
+    head.next.next = ListNode(3)
+    head.next.next.next = ListNode(3)
+    head.next.next.next.next = ListNode(2)
+    head.next.next.next.next.next = ListNode(1)
+    print(isPalindrome(head))
+    head = ListNode(1)
+    head.next = ListNode(2)
+    head.next.next = ListNode(3)
+    head.next.next.next = ListNode(4)
+    head.next.next.next.next = ListNode(4)
+    head.next.next.next.next.next = ListNode(3)
+    head.next.next.next.next.next.next = ListNode(2)
+    head.next.next.next.next.next.next.next = ListNode(1)
+    print(isPalindrome(head))
+    head = ListNode(1)
+    head.next = ListNode(2)
+    head.next.next = ListNode(3)
+    head.next.next.next = ListNode(4)
+    head.next.next.next.next = ListNode(5)
+    head.next.next.next.next.next = ListNode(4)
+    head.next.next.next.next.next.next = ListNode(3)
+    head.next.next.next.next.next.next.next = ListNode(2)
+    head.next.next.next.next.next.next.next.next = ListNode(1)
+    print(isPalindrome(head))
+    head = ListNode(1)
+    head.next = ListNode(2)
+    head.next.next = ListNode(3)
+    head.next.next.next = ListNode(4)
+    head.next.next.next.next = ListNode(5)
+    head.next.next.next.next.next = ListNode(5)
+    head.next.next.next.next.next.next = ListNode(4)
+    head.next.next.next.next.next.next.next = ListNode(3)
+    head.next.next.next.next.next.next.next.next = ListNode(2)
+    head.next.next.next.next.next.next.next.next.next = ListNode(1)
+    print(isPalindrome(head))
