@@ -16,12 +16,12 @@ def reverseList(head: Optional[ListNode]) -> Optional[ListNode]:
 
 
 if __name__ == "__main__":
-    head = ListNode(1)
-    head.next = ListNode(2)
-    head.next.next = ListNode(3)
-    head.next.next.next = ListNode(4)
-    head.next.next.next.next = ListNode(5)
-    head = reverseList(head)
-    while head:
-        print(head.val)
-        head = head.next
+    head_outer = ListNode(1)
+    head_outer.next = ListNode(2)
+    head_outer.next.next = ListNode(3)
+    head_outer.next.next.next = ListNode(4)
+    head_outer.next.next.next.next = ListNode(5)
+    head_outer = reverseList(head_outer)
+    while head_outer:
+        print(head_outer.val)
+        head_outer = head_outer.next

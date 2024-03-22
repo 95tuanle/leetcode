@@ -25,37 +25,37 @@ def mergeInBetween(list1: ListNode, a: int, b: int, list2: ListNode) -> ListNode
 
 
 if __name__ == "__main__":
-    list1 = ListNode(0, ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5))))))
-    list2 = ListNode(1000000, ListNode(1000001, ListNode(1000002)))
-    list1 = mergeInBetween(list1, 3, 4, list2)
-    while list1:
-        print(list1.val)
-        list1 = list1.next
+    list_1 = ListNode(0, ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5))))))
+    list_2 = ListNode(1000000, ListNode(1000001, ListNode(1000002)))
+    list_1 = mergeInBetween(list_1, 3, 4, list_2)
+    while list_1:
+        print(list_1.val)
+        list_1 = list_1.next
     print()
-    list1 = ListNode(0, ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5))))))
-    list2 = ListNode(1000000, ListNode(1000001, ListNode(1000002)))
-    list1 = mergeInBetween(list1, 0, 0, list2)
-    while list1:
-        print(list1.val)
-        list1 = list1.next
+    list_1 = ListNode(0, ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5))))))
+    list_2 = ListNode(1000000, ListNode(1000001, ListNode(1000002)))
+    list_1 = mergeInBetween(list_1, 0, 0, list_2)
+    while list_1:
+        print(list_1.val)
+        list_1 = list_1.next
     print()
-    list1 = ListNode(0, ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5))))))
-    list2 = ListNode(1000000, ListNode(1000001, ListNode(1000002)))
-    list1 = mergeInBetween(list1, 0, 1, list2)
-    while list1:
-        print(list1.val)
-        list1 = list1.next
+    list_1 = ListNode(0, ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5))))))
+    list_2 = ListNode(1000000, ListNode(1000001, ListNode(1000002)))
+    list_1 = mergeInBetween(list_1, 0, 1, list_2)
+    while list_1:
+        print(list_1.val)
+        list_1 = list_1.next
     print()
-    list1 = ListNode(0, ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5))))))
-    list2 = ListNode(1000000, ListNode(1000001, ListNode(1000002)))
-    list1 = mergeInBetween(list1, 1, 4, list2)
-    while list1:
-        print(list1.val)
-        list1 = list1.next
+    list_1 = ListNode(0, ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5))))))
+    list_2 = ListNode(1000000, ListNode(1000001, ListNode(1000002)))
+    list_1 = mergeInBetween(list_1, 1, 4, list_2)
+    while list_1:
+        print(list_1.val)
+        list_1 = list_1.next
     print()
-    list1 = ListNode(0, ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5))))))
-    list2 = ListNode(1000000, ListNode(1000001, ListNode(1000002)))
-    list1 = mergeInBetween(list1, 0, 4, list2)
-    while list1:
-        print(list1.val)
-        list1 = list1.next
+    list_1 = ListNode(0, ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5))))))
+    list_2 = ListNode(1000000, ListNode(1000001, ListNode(1000002)))
+    list_1 = mergeInBetween(list_1, 0, 4, list_2)
+    while list_1:
+        print(list_1.val)
+        list_1 = list_1.next
