@@ -16,9 +16,9 @@ public class PalindromeLinkedList234 {
             fast = fast.next.next;
             slow = slow.next;
         }
-        ListNode end = null;
+        ListNode end = null, next;
         while (slow != null) {
-            ListNode next = slow.next;
+            next = slow.next;
             slow.next = end;
             end = slow;
             slow = next;
