@@ -9,8 +9,10 @@ class ListNode:
 
 
 def isPalindrome(head: Optional[ListNode]) -> bool:
+    if not head or not head.next:
+        return True
     slow, fast = head, head
-    while fast and fast.next:
+    while fast.next and fast.next.next:
         slow, fast = slow.next, fast.next.next
     end = None
     while slow:
