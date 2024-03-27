@@ -18,10 +18,7 @@ public class SubarrayProductLessThanK713 {
         int product = 1, left = 0, right = 0;
         for (; right < nums.length; right++) {
             product *= nums[right];
-            while (left <= right && product >= k) {
-                product /= nums[left];
-                left++;
-            }
+            while (left <= right && product >= k) product /= nums[left++];
             counter += right - left + 1;
         }
         return counter;
