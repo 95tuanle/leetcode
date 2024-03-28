@@ -4,10 +4,7 @@ from typing import List
 
 
 def numSubarrayProductLessThanK(nums: List[int], k: int) -> int:
-    counter = 0
-    if len(nums) == 0:
-        return 0
-    product, left = 1, 0
+    counter, product, left = 0, 1, 0
     for right in range(len(nums)):
         product *= nums[right]
         while left <= right and product >= k:
