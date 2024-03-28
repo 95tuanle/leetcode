@@ -13,9 +13,7 @@ public class SubarrayProductLessThanK713 {
     }
 
     public static int numSubarrayProductLessThanK(int[] nums, int k) {
-        int counter = 0;
-        if (nums.length == 0) return counter;
-        int product = 1, left = 0, right = 0;
+        int counter = 0, product = 1, left = 0, right = 0;
         for (; right < nums.length; right++) {
             product *= nums[right];
             while (left <= right && product >= k) product /= nums[left++];
