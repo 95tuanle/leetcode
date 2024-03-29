@@ -12,9 +12,9 @@ public class CountSubarraysWhereMaxElementAppearsAtLeastKTimes2962 {
 
     public long countSubarrays(int[] nums, int k) {
         long result = 0;
-        int max = 1, counter = 0, left = 0, right = 0, length = nums.length;
+        int max = 1, counter = 0, left = 0, right = 0;
         for (int num : nums) max = Math.max(num, max);
-        for (; right < length; right++) {
+        for (; right < nums.length; right++) {
             if (nums[right] == max) counter++;
             while (counter == k) if (nums[left++] == max) counter--;
             result += left;
