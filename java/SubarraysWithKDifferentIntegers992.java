@@ -24,7 +24,7 @@ public class SubarraysWithKDifferentIntegers992 {
                 else frequencies.replace(nums[near++], frequency);
                 far = near;
             }
-            while (frequencies.get(nums[near]) > 1) {
+            while (near < nums.length && frequencies.get(nums[near]) > 1) {
                 frequencies.put(nums[near], frequencies.get(nums[near]) - 1);
                 near++;
             }
