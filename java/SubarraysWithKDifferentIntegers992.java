@@ -14,21 +14,21 @@ public class SubarraysWithKDifferentIntegers992 {
     }
 
     public static int subarraysWithKDistinct(int[] nums, int k) {
-        int result = 0, leftNear = 0, leftFar = 0;
+        int result = 0, near = 0, far = 0;
         HashMap<Integer, Integer> frequencies = new HashMap<>();
         for (int num : nums) {
             frequencies.put(num, frequencies.getOrDefault(num, 0) + 1);
             while (frequencies.size() > k) {
-                int frequency = frequencies.get(nums[leftNear]) - 1;
-                if (frequency == 0) frequencies.remove(nums[leftNear++]);
-                else frequencies.replace(nums[leftNear++], frequency);
-                leftFar = leftNear;
+                int frequency = frequencies.get(nums[near]) - 1;
+                if (frequency == 0) frequencies.remove(nums[near++]);
+                else frequencies.replace(nums[near++], frequency);
+                far = near;
             }
-            while (frequencies.get(nums[leftNear]) > 1) {
-                frequencies.put(nums[leftNear], frequencies.get(nums[leftNear]) - 1);
-                leftNear++;
+            while (frequencies.get(nums[near]) > 1) {
+                frequencies.put(nums[near], frequencies.get(nums[near]) - 1);
+                near++;
             }
-            if (frequencies.size() == k) result += leftNear - leftFar + 1;
+            if (frequencies.size() == k) result += near - far + 1;
         }
         return result;
     }
