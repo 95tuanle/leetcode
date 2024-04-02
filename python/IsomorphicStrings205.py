@@ -6,7 +6,7 @@ def isIsomorphic(s: str, t: str) -> bool:
     s_map, t_map = {}, {}
     for i in range(len(s)):
         s_char, t_char = s[i], t[i]
-        if s_map.get(s_char, t_char) != t_char or t_map.get(t_char, s_char) != s_char:
+        if (s_char in s_map and s_map[s_char] != t_char) or (t_char in t_map and t_map[t_char] != s_char):
             return False
         s_map[s_char] = t_char
         t_map[t_char] = s_char
