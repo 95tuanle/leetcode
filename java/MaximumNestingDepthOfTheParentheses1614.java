@@ -20,10 +20,10 @@ public class MaximumNestingDepthOfTheParentheses1614 {
     }
 
     public static int maxDepth(String s) {
-        int max = 0, current = 0;
+        int result = 0, current = 0;
         for (int i = 0; i < s.length(); i++)
-            if (s.charAt(i) == '(') current++;
-            else if (s.charAt(i) == ')') max = Math.max(max, current--);
-        return max;
+            if (s.charAt(i) == '(') result = Math.max(result, ++current);
+            else if (s.charAt(i) == ')') current--;
+        return result;
     }
 }
