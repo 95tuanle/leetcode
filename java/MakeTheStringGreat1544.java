@@ -21,10 +21,12 @@ public class MakeTheStringGreat1544 {
 
     public static String makeGood(String s) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < s.length(); i++)
-            if (!stringBuilder.isEmpty() && Math.abs(stringBuilder.charAt(stringBuilder.length() - 1) - s.charAt(i)) == 32)
-                stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-            else stringBuilder.append(s.charAt(i));
+        for (char c : s.toCharArray()) {
+            int lastCharIndex = stringBuilder.length() - 1;
+            if (lastCharIndex >= 0 && Math.abs(stringBuilder.charAt(lastCharIndex) - c) == 32)
+                stringBuilder.deleteCharAt(lastCharIndex);
+            else stringBuilder.append(c);
+        }
         return stringBuilder.toString();
 
 //        Stack<Character> stack = new Stack<>();
