@@ -33,7 +33,7 @@ public class MakeTheStringGreat1544 {
             }
         }
         StringBuilder stringBuilder = new StringBuilder();
-        while (!stack.empty()) stringBuilder.insert(0, stack.pop());
-        return stringBuilder.toString();
+        while (!stack.empty()) stringBuilder.append(stack.pop());
+        return stringBuilder.reverse().toString();
     }
 }
