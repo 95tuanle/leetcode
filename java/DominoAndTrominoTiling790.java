@@ -16,6 +16,7 @@ public class DominoAndTrominoTiling790 {
     }
 
     public static int numTilings(int n) {
+        final int MOD = 1000000007;
         int result = 0;
 
         return result;
