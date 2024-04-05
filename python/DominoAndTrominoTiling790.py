@@ -11,7 +11,7 @@ def numTilings(n: int) -> int:
     if n == 3:
         return 5
     one, two, three = 1, 2, 5
-    for i in range(4, n + 1):
+    for _ in range(4, n + 1):
         one, two, three = two, three, (2 * three + one) % 1000000007
     return three
 

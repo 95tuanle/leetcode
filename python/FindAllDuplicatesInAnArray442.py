@@ -5,14 +5,14 @@ from typing import List
 
 
 def findDuplicates(nums: List[int]) -> List[int]:
-    list = []
+    result = []
     for num in nums:
         new_num = abs(num)
         if nums[new_num - 1] < 0:
-            list.append(new_num)
+            result.append(new_num)
         else:
             nums[new_num - 1] = -nums[new_num - 1]
-    return list
+    return result
 
 
 if __name__ == "__main__":
