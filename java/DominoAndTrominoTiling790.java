@@ -16,9 +16,30 @@ public class DominoAndTrominoTiling790 {
     }
 
     public static int numTilings(int n) {
-        final int MOD = 1000000007;
-        int result = 0;
+        if (n == 1) return 1;
+        if (n == 2) return 2;
+        if (n == 3) return 5;
+        long long1 = 1, long2 = 2, long3 = 5, temp;
+        for (int i = 4; i <= n; ++i) {
+            temp = (2 * long3 + long1) % 1000000007;
+            long1 = long2;
+            long2 = long3;
+            long3 = temp;
+        }
+        return (int) long3;
 
-        return result;
+//        long[] g = new long[1001], u = new long[1001];
+//        final int mod = 1000000007;
+//        g[0] = 0;
+//        g[1] = 1;
+//        g[2] = 2;
+//        u[0] = 0;
+//        u[1] = 1;
+//        u[2] = 2;
+//        for (int i = 3; i <= n; i++) {
+//            u[i] = (u[i - 1] + g[i - 1]) % mod;
+//            g[i] = (g[i - 1] + g[i - 2] + 2 * u[i - 2]) % mod;
+//        }
+//        return (int) g[n] % mod;
     }
 }
