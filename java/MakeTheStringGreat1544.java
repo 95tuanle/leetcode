@@ -1,5 +1,3 @@
-import java.util.Stack;
-
 /*
 Given a string s of lower and upper case English letters.
 A good string is a string which doesn't have two adjacent characters s[i] and s[i + 1] where:
@@ -22,18 +20,19 @@ public class MakeTheStringGreat1544 {
     }
 
     public static String makeGood(String s) {
-        Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
-            char cNext = s.charAt(i);
-            if (stack.empty()) stack.push(cNext);
-            else {
-                char c = stack.peek();
-                if (c == cNext || Character.toLowerCase(c) != Character.toLowerCase(cNext)) stack.push(cNext);
-                else stack.pop();
-            }
-        }
         StringBuilder stringBuilder = new StringBuilder();
-        while (!stack.empty()) stringBuilder.append(stack.pop());
-        return stringBuilder.reverse().toString();
+        for (int i = 0; i < s.length(); i++)
+            if (!stringBuilder.isEmpty() && Math.abs(stringBuilder.charAt(stringBuilder.length() - 1) - s.charAt(i)) == 32)
+                stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+            else stringBuilder.append(s.charAt(i));
+        return stringBuilder.toString();
+
+//        Stack<Character> stack = new Stack<>();
+//        for (int i = 0; i < s.length(); i++)
+//            if (!stack.empty() && Math.abs(stack.peek() - s.charAt(i)) == 32) stack.pop();
+//            else stack.push(s.charAt(i));
+//        StringBuilder stringBuilder = new StringBuilder();
+//        while (!stack.empty()) stringBuilder.append(stack.pop());
+//        return stringBuilder.reverse().toString();
     }
 }
