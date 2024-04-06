@@ -28,15 +28,40 @@ public class MinimumRemoveToMakeValidParentheses1249 {
             if (c == '(') {
                 stringBuilder.append(c);
                 count++;
-            } else if (c == ')' && count > 0) {
+            } else if (c != ')') stringBuilder.append(c);
+            else if (count > 0) {
                 stringBuilder.append(c);
                 count--;
-            } else if (c != ')') stringBuilder.append(c);
-        for (int i = stringBuilder.length() - 1; i >= 0; i--)
-            if (stringBuilder.charAt(i) == '(' && count > 0) {
+            }
+        int i = stringBuilder.length() - 1;
+        while (count > 0) {
+            if (stringBuilder.charAt(i) == '(') {
                 stringBuilder.deleteCharAt(i);
                 count--;
             }
+            i--;
+        }
         return stringBuilder.toString();
+
+//        StringBuilder stringBuilder = new StringBuilder();
+//        Stack<Integer> stack = new Stack<>();
+//        for (int i = 0; i < s.length(); i++)
+//            switch (s.charAt(i)) {
+//                case '(':
+//                    stringBuilder.append('(');
+//                    stack.push(stringBuilder.length() - 1);
+//                    break;
+//                case ')':
+//                    if (!stack.isEmpty()) {
+//                        stack.pop();
+//                        stringBuilder.append(')');
+//                    }
+//                    break;
+//                default:
+//                    stringBuilder.append(s.charAt(i));
+//                    break;
+//            }
+//        while (!stack.isEmpty()) stringBuilder.deleteCharAt(stack.pop());
+//        return stringBuilder.toString();
     }
 }
