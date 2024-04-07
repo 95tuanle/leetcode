@@ -19,13 +19,13 @@ public class ValidParenthesisString678 {
     }
 
     public static boolean checkValidString(String s) {
-        int open = 0, close = 0, length = s.length() - 1;
+        int openBalance = 0, closeBalance = 0, length = s.length() - 1;
         for (int i = 0; i <= length; i++) {
-            if (s.charAt(i) == ')') open--;
-            else open++;
-            if (s.charAt(length - i) == '(') close--;
-            else close++;
-            if (open < 0 || close < 0) return false;
+            if (s.charAt(i) == ')') openBalance--;
+            else openBalance++;
+            if (s.charAt(length - i) == '(') closeBalance--;
+            else closeBalance++;
+            if (openBalance < 0 || closeBalance < 0) return false;
         }
         return true;
     }
