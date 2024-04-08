@@ -18,11 +18,11 @@ public class NumberOfStudentsUnableToEatLunch1700 {
 
     public static int countStudents(int[] students, int[] sandwiches) {
         int result = sandwiches.length, zeroStudents = 0, oneStudents = 0;
-        for (int i : students)
-            if (i == 0) zeroStudents++;
+        for (int student : students)
+            if (student == 0) zeroStudents++;
             else oneStudents++;
-        for (int i : sandwiches)
-            if (i == 0) {
+        for (int sandwich : sandwiches)
+            if (sandwich == 0) {
                 if (zeroStudents > 0) {
                     result--;
                     zeroStudents--;
