@@ -16,7 +16,10 @@ public class TimeNeededToBuyTickets2073 {
 
     public static int timeRequiredToBuy(int[] tickets, int k) {
         int result = 0, kTickets = tickets[k], i = 0;
-        for (; i <= k; i++) result += Math.min(tickets[i], kTickets);
+        for (; i < k; i++) result += Math.min(tickets[i], kTickets);
+        result += kTickets;
+        i++;
+
         kTickets--;
         for (; i < tickets.length; i++) result += Math.min(tickets[i], kTickets);
         return result;
