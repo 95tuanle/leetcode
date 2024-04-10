@@ -21,10 +21,10 @@ public class RevealCardsInIncreasingOrder950 {
     }
 
     public static int[] deckRevealedIncreasing(int[] deck) {
-        Arrays.sort(deck);
         int length = deck.length;
         LinkedList<Integer> queue = new LinkedList<>();
         for (int i = 0; i < length; i++) queue.add(i);
+        Arrays.sort(deck);
         int[] result = new int[length];
         for (int i : deck) {
             result[queue.poll()] = i;
