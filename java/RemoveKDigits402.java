@@ -20,14 +20,14 @@ public class RemoveKDigits402 {
             }
             stack.addLast(c);
         }
-        while (!stack.isEmpty() && k > 0) {
-            k--;
-            stack.removeLast();
-        }
+        while (k-- > 0) stack.removeLast();
         StringBuilder sb = new StringBuilder();
-        while (!stack.isEmpty()) sb.append(stack.removeFirst());
-        while (sb.length() > 1 && sb.charAt(0) == '0') sb.deleteCharAt(0);
-        if (sb.isEmpty()) return "0";
-        return sb.toString();
+        boolean leadingZero = true;
+        for (char c : stack) {
+            if (leadingZero && c == '0') continue;
+            leadingZero = false;
+            sb.append(c);
+        }
+        return sb.isEmpty() ? "0" : sb.toString();
     }
 }
