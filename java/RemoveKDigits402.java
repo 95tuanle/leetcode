@@ -13,20 +13,20 @@ public class RemoveKDigits402 {
 
     public static String removeKdigits(String num, int k) {
         ArrayDeque<Character> stack = new ArrayDeque<>();
-        for (char c : num.toCharArray()) {
-            while (!stack.isEmpty() && stack.peekLast() > c && k > 0) {
+        for (char digit : num.toCharArray()) {
+            while (!stack.isEmpty() && stack.peekLast() > digit && k > 0) {
                 k--;
                 stack.removeLast();
             }
-            stack.addLast(c);
+            stack.addLast(digit);
         }
         while (k-- > 0) stack.removeLast();
         StringBuilder sb = new StringBuilder();
         boolean leadingZero = true;
-        for (char c : stack) {
-            if (leadingZero && c == '0') continue;
+        for (char digit : stack) {
+            if (leadingZero && digit == '0') continue;
             leadingZero = false;
-            sb.append(c);
+            sb.append(digit);
         }
         return sb.isEmpty() ? "0" : sb.toString();
     }
