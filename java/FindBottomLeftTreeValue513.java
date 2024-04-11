@@ -16,13 +16,13 @@ public class FindBottomLeftTreeValue513 {
     }
 
     public static int findBottomLeftValue(TreeNode root) {
-        LinkedList<TreeNode> linkedList = new LinkedList<>();
-        linkedList.add(root);
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
         TreeNode currentNode = null;
-        while (!linkedList.isEmpty()) {
-            currentNode = linkedList.poll();
-            if (currentNode.right != null) linkedList.add(currentNode.right);
-            if (currentNode.left != null) linkedList.add(currentNode.left);
+        while (!queue.isEmpty()) {
+            currentNode = queue.poll();
+            if (currentNode.right != null) queue.add(currentNode.right);
+            if (currentNode.left != null) queue.add(currentNode.left);
         }
         return currentNode.val;
 

@@ -1,5 +1,4 @@
 import java.util.LinkedList;
-import java.util.Queue;
 
 /*
 You have a RecentCounter class which counts the number of recent requests within a certain time frame.
@@ -19,7 +18,7 @@ public class NumberOfRecentCalls933 {
 }
 
 class RecentCounter {
-    final Queue<Integer> queue;
+    final LinkedList<Integer> queue;
 
     public RecentCounter() {
         this.queue = new LinkedList<>();

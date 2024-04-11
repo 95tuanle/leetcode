@@ -19,14 +19,14 @@ public class TaskScheduler621 {
         PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
         for (int i : freq) if (i > 0) pq.offer(i);
         int time = 0;
-        LinkedList<int[]> ll = new LinkedList<>();
-        while (!pq.isEmpty() || !ll.isEmpty()) {
+        LinkedList<int[]> queue = new LinkedList<>();
+        while (!pq.isEmpty() || !queue.isEmpty()) {
             time++;
             if (!pq.isEmpty()) {
                 int count = pq.poll() - 1;
-                if (count > 0) ll.offer(new int[]{count, time + n});
+                if (count > 0) queue.offer(new int[]{count, time + n});
             }
-            if (!ll.isEmpty() && ll.peek()[1] == time) pq.offer(ll.poll()[0]);
+            if (!queue.isEmpty() && queue.peek()[1] == time) pq.offer(queue.poll()[0]);
         }
         return time;
     }

@@ -1,6 +1,5 @@
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 /*
 There are n rooms labeled from 0 to n - 1 and all the rooms are locked except for room 0. Your goal is to visit all the rooms. However, you cannot enter a locked room without having its key.
@@ -18,7 +17,7 @@ public class KeysAndRooms841 {
 
     public static boolean canVisitAllRooms(List<List<Integer>> rooms) {
         boolean[] visited = new boolean[rooms.size()];
-        Queue<Integer> queue = new LinkedList<>();
+        LinkedList<Integer> queue = new LinkedList<>();
         visited[0] = true;
         queue.offer(0);
         while (!queue.isEmpty()) {

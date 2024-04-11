@@ -1,4 +1,4 @@
-import java.util.ArrayDeque;
+import java.util.LinkedList;
 
 /*
 Given string num representing a non-negative integer num, and an integer k, return the smallest possible integer after removing k digits from num.
@@ -12,18 +12,18 @@ public class RemoveKDigits402 {
     }
 
     public static String removeKdigits(String num, int k) {
-        ArrayDeque<Character> stack = new ArrayDeque<>();
+        LinkedList<Character> deque = new LinkedList<>();
         for (char digit : num.toCharArray()) {
-            while (!stack.isEmpty() && stack.peekLast() > digit && k > 0) {
+            while (!deque.isEmpty() && deque.peekLast() > digit && k > 0) {
                 k--;
-                stack.removeLast();
+                deque.removeLast();
             }
-            stack.addLast(digit);
+            deque.addLast(digit);
         }
-        while (k-- > 0) stack.removeLast();
+        while (k-- > 0) deque.removeLast();
         StringBuilder sb = new StringBuilder();
         boolean leadingZero = true;
-        for (char digit : stack) {
+        for (char digit : deque) {
             if (leadingZero && digit == '0') continue;
             leadingZero = false;
             sb.append(digit);

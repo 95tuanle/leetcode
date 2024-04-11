@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 /*
 You are given an array of variable pairs equations and an array of real numbers values, where equations[i] = [Ai, Bi] and values[i] represent the equation Ai / Bi = values[i]. Each Ai or Bi is a string that represents a single variable.
@@ -36,7 +39,7 @@ public class EvaluateDivision399 {
     private static double breadthFirstSearch(String source, String target, HashMap<String, HashMap<String, Double>> adj) {
         if (!adj.containsKey(source) || !adj.containsKey(target)) return -1.0;
         if (source.equals(target)) return 1.0;
-        Queue<String> queue = new LinkedList<>();
+        LinkedList<String> queue = new LinkedList<>();
         HashMap<String, Double> visited = new HashMap<>();
         queue.add(source);
         visited.put(source, 1.0);

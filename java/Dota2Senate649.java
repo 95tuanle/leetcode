@@ -1,5 +1,4 @@
 import java.util.LinkedList;
-import java.util.Queue;
 
 /*
 In the world of Dota2, there are two parties: the Radiant and the Dire.
@@ -18,25 +17,25 @@ public class Dota2Senate649 {
     }
 
     public static String predictPartyVictory(String senate) {
-        Queue<Character> senateQueue = new LinkedList<>();
+        LinkedList<Character> queue = new LinkedList<>();
         int radiant = 0;
         int dire = 0;
         for (char senateChar : senate.toCharArray()) {
-            senateQueue.offer(senateChar);
+            queue.offer(senateChar);
             if (senateChar == 'R') radiant++;
             else dire++;
         }
         int bannedRadiant = 0;
         int bannedDire = 0;
-        while (radiant > 0 && dire > 0 && !senateQueue.isEmpty()) {
-            char senateChar = senateQueue.poll();
+        while (radiant > 0 && dire > 0 && !queue.isEmpty()) {
+            char senateChar = queue.poll();
             if (senateChar == 'R') {
                 if (bannedRadiant > 0) {
                     bannedRadiant--;
                     radiant--;
                 } else {
                     bannedDire++;
-                    senateQueue.offer(senateChar);
+                    queue.offer(senateChar);
                 }
             } else {
                 if (bannedDire > 0) {
@@ -44,7 +43,7 @@ public class Dota2Senate649 {
                     dire--;
                 } else {
                     bannedRadiant++;
-                    senateQueue.offer(senateChar);
+                    queue.offer(senateChar);
                 }
             }
         }
