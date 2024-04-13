@@ -11,20 +11,18 @@ public class MaximalRectangle85 {
     }
 
     public static int maximalRectangle(char[][] matrix) {
-        int rows = matrix.length, columns = matrix[0].length;
-        int[][] cache = new int[rows][columns];
-        int max = 0;
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
+        int maxArea = 0;
+        int[][] dp = new int[matrix.length][matrix[0].length];
+        for (int i = 0; i < matrix.length; i++)
+            for (int j = 0; j < matrix[0].length; j++)
                 if (matrix[i][j] == '1') {
-                    cache[i][j] = j == 0 ? 1 : cache[i][j - 1] + 1; // width of the rectangle ending at this point
-                    for (int k = i, width = cache[i][j]; k >= 0; k--) {
-                        width = Math.min(width, cache[k][j]); // find the minimum width from this row to the topmost row
-                        max = Math.max(max, width * (i - k + 1)); // calculate the maximum area
+                    dp[i][j] = (j == 0) ? 1 : dp[i][j - 1] + 1;
+                    int width = dp[i][j];
+                    for (int k = i; k >= 0; k--) {
+                        width = Math.min(width, dp[k][j]);
+                        maxArea = Math.max(maxArea, width * (i - k + 1));
                     }
                 }
-            }
-        }
-        return max;
+        return maxArea;
     }
 }
