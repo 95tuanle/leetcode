@@ -18,12 +18,11 @@ public class SumRootToLeafNumbers129 {
         return depthFirstSearch(0, root);
     }
 
-    private static int depthFirstSearch(int val, TreeNode root) {
-        val = val * 10 + root.val;
-        if (root.left == null && root.right == null) return val;
-        else if (root.left == null) return depthFirstSearch(val, root.right);
-        else if (root.right == null) return depthFirstSearch(val, root.left);
-        else return depthFirstSearch(val, root.left) + depthFirstSearch(val, root.right);
+    private static int depthFirstSearch(int number, TreeNode node) {
+        if (node == null) return 0;
+        number = number * 10 + node.val;
+        if (node.left == null && node.right == null) return number;
+        return depthFirstSearch(number, node.left) + depthFirstSearch(number, node.right);
     }
 
     public static class TreeNode {
