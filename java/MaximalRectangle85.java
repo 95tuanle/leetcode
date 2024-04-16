@@ -13,28 +13,20 @@ public class MaximalRectangle85 {
     }
 
     public static int maximalRectangle(char[][] matrix) {
-        int maxArea = 0;
-        int[] heights = new int[matrix[0].length];
-        for (char[] chars : matrix) {
-            for (int j = 0; j < matrix[0].length; j++)
-                if (chars[j] == '1') heights[j] += 1;
-                else heights[j] = 0;
-            maxArea = Math.max(maxArea, largestRectangleArea(heights));
-        }
-        return maxArea;
-    }
-
-    private static int largestRectangleArea(int[] heights) {
+        int maxArea = 0, length = matrix[0].length;
+        int[] heights = new int[length];
         ArrayDeque<Integer> stack = new ArrayDeque<>();
         stack.push(-1);
-        int maxArea = 0;
-        for (int i = 0; i < heights.length; i++) {
-            while (stack.peek() != -1 && heights[stack.peek()] >= heights[i])
-                maxArea = Math.max(maxArea, heights[stack.pop()] * (i - stack.peek() - 1));
-            stack.push(i);
+        for (char[] row : matrix) {
+            for (int i = 0; i < length; i++) {
+                if (row[i] == '1') heights[i] += 1;
+                else heights[i] = 0;
+                while (stack.peek() != -1 && heights[i] <= heights[stack.peek()])
+                    maxArea = Math.max(maxArea, heights[stack.pop()] * (i - 1 - stack.peek()));
+                stack.push(i);
+            }
+            while (stack.peek() != -1) maxArea = Math.max(maxArea, heights[stack.pop()] * (length - 1 - stack.peek()));
         }
-        while (stack.peek() != -1)
-            maxArea = Math.max(maxArea, heights[stack.pop()] * (heights.length - stack.peek() - 1));
         return maxArea;
     }
 }

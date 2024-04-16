@@ -21,7 +21,7 @@ public class RemovingStarsFromAString2390 {
         ArrayDeque<Character> charStack = new ArrayDeque<>();
         char[] charArray = s.toCharArray();
         for (char character : charArray)
-            if (character == '*' && !charStack.isEmpty()) charStack.pollLast();
+            if (character == '*' && !charStack.isEmpty()) charStack.removeLast();
             else if (character != '*') charStack.addLast(character);
         StringBuilder stringBuilder = new StringBuilder(charStack.size());
         for (Character character : charStack) stringBuilder.append(character);
