@@ -1,5 +1,5 @@
+import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.Stack;
 
 /*
 Given an array of integers arr, find the sum of min(b), where b ranges over every (contiguous) subarray of arr. Since the answer may be large, return the answer modulo 109 + 7.
@@ -14,14 +14,14 @@ public class SumOfSubarrayMinimums907 {
     }
 
     public static int sumSubarrayMins(int[] arr) {
-        Stack<Integer> stack = new Stack<>();
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
         int[] previousLesser = new int[arr.length];
         int[] nextLesserOrEqual = new int[arr.length];
         Arrays.fill(nextLesserOrEqual, arr.length);
         for (int i = 0; i < arr.length; i++) {
-            while (!stack.isEmpty() && arr[stack.peek()] >= arr[i]) nextLesserOrEqual[stack.pop()] = i;
-            previousLesser[i] = stack.isEmpty() ? -1 : stack.peek();
-            stack.push(i);
+            while (!stack.isEmpty() && arr[stack.peekLast()] >= arr[i]) nextLesserOrEqual[stack.removeLast()] = i;
+            previousLesser[i] = stack.isEmpty() ? -1 : stack.peekLast();
+            stack.addLast(i);
         }
         long sum = 0;
         double mod = Math.pow(10, 9) + 7;

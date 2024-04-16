@@ -1,4 +1,4 @@
-import java.util.Stack;
+import java.util.ArrayDeque;
 
 /*
 You are given a string s, which contains stars *.
@@ -18,11 +18,11 @@ public class RemovingStarsFromAString2390 {
     }
 
     public static String removeStars(String s) {
-        Stack<Character> charStack = new Stack<>();
+        ArrayDeque<Character> charStack = new ArrayDeque<>();
         char[] charArray = s.toCharArray();
         for (char character : charArray)
-            if (character == '*' && !charStack.isEmpty()) charStack.pop();
-            else if (character != '*') charStack.push(character);
+            if (character == '*' && !charStack.isEmpty()) charStack.pollLast();
+            else if (character != '*') charStack.addLast(character);
         StringBuilder stringBuilder = new StringBuilder(charStack.size());
         for (Character character : charStack) stringBuilder.append(character);
         return stringBuilder.toString();

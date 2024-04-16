@@ -44,16 +44,16 @@ public class MinimumRemoveToMakeValidParentheses1249 {
         return stringBuilder.toString();
 
 //        StringBuilder stringBuilder = new StringBuilder();
-//        Stack<Integer> stack = new Stack<>();
+//        ArrayDeque<Integer> stack = new ArrayDeque<>();
 //        for (int i = 0; i < s.length(); i++)
 //            switch (s.charAt(i)) {
 //                case '(':
 //                    stringBuilder.append('(');
-//                    stack.push(stringBuilder.length() - 1);
+//                    stack.addLast(stringBuilder.length() - 1);
 //                    break;
 //                case ')':
 //                    if (!stack.isEmpty()) {
-//                        stack.pop();
+//                        stack.removeLast();
 //                        stringBuilder.append(')');
 //                    }
 //                    break;
@@ -61,7 +61,7 @@ public class MinimumRemoveToMakeValidParentheses1249 {
 //                    stringBuilder.append(s.charAt(i));
 //                    break;
 //            }
-//        while (!stack.isEmpty()) stringBuilder.deleteCharAt(stack.pop());
+//        while (!stack.isEmpty()) stringBuilder.deleteCharAt(stack.removeLast());
 //        return stringBuilder.toString();
     }
 }

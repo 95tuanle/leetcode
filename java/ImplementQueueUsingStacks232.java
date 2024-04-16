@@ -1,4 +1,4 @@
-import java.util.Stack;
+import java.util.ArrayDeque;
 
 /*
 Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the functions of a normal queue (push, peek, pop, and empty).
@@ -24,33 +24,33 @@ public class ImplementQueueUsingStacks232 {
 }
 
 class MyQueue {
-    final Stack<Integer> main;
-    final Stack<Integer> sub;
+    final ArrayDeque<Integer> main;
+    final ArrayDeque<Integer> sub;
 
     public MyQueue() {
-        this.main = new Stack<>();
-        this.sub = new Stack<>();
+        this.main = new ArrayDeque<>();
+        this.sub = new ArrayDeque<>();
     }
 
     public void push(int x) {
-        main.push(x);
+        main.addLast(x);
     }
 
     public int pop() {
-        while (!main.empty()) sub.push(main.pop());
-        int res = sub.pop();
-        while (!sub.empty()) main.push(sub.pop());
+        while (!main.isEmpty()) sub.addLast(main.removeLast());
+        int res = sub.removeLast();
+        while (!sub.isEmpty()) main.addLast(sub.removeLast());
         return res;
     }
 
     public int peek() {
-        while (!main.empty()) sub.push(main.pop());
-        int res = sub.peek();
-        while (!sub.empty()) main.push(sub.pop());
+        while (!main.isEmpty()) sub.addLast(main.removeLast());
+        int res = sub.peekLast();
+        while (!sub.isEmpty()) main.addLast(sub.removeLast());
         return res;
     }
 
     public boolean empty() {
-        return main.empty();
+        return main.isEmpty();
     }
 }

@@ -1,4 +1,4 @@
-import java.util.Stack;
+import java.util.ArrayDeque;
 
 /*
 Given an encoded string, return its decoded string.
@@ -14,8 +14,8 @@ public class DecodeString394 {
     }
 
     public static String decodeString(String s) {
-        Stack<Integer> countStack = new Stack<>();
-        Stack<String> stringStack = new Stack<>();
+        ArrayDeque<Integer> countStack = new ArrayDeque<>();
+        ArrayDeque<String> stringStack = new ArrayDeque<>();
         StringBuilder currentString = new StringBuilder();
         int currentCount = 0;
         for (char c : s.toCharArray()) {

@@ -29,12 +29,12 @@ public class MakeTheStringGreat1544 {
         }
         return stringBuilder.toString();
 
-//        Stack<Character> stack = new Stack<>();
+//        ArrayDeque<Character> stack = new ArrayDeque<>();
 //        for (int i = 0; i < s.length(); i++)
-//            if (!stack.empty() && Math.abs(stack.peek() - s.charAt(i)) == 32) stack.pop();
-//            else stack.push(s.charAt(i));
+//            if (!stack.isEmpty() && Math.abs(stack.peekLast() - s.charAt(i)) == 32) stack.removeLast();
+//            else stack.addLast(s.charAt(i));
 //        StringBuilder stringBuilder = new StringBuilder();
-//        while (!stack.empty()) stringBuilder.append(stack.pop());
+//        while (!stack.isEmpty()) stringBuilder.append(stack.removeLast());
 //        return stringBuilder.reverse().toString();
     }
 }

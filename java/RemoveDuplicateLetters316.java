@@ -1,4 +1,4 @@
-import java.util.Stack;
+import java.util.ArrayDeque;
 
 /*
 Given a string s, remove duplicate letters so that every letter appears once and only once. You must make sure your result is
@@ -14,13 +14,13 @@ public class RemoveDuplicateLetters316 {
         int[] charCount = new int[26];
         for (char character : s.toCharArray()) charCount[character - 'a']++;
         boolean[] visited = new boolean[26];
-        Stack<Character> characters = new Stack<>();
+        ArrayDeque<Character> characters = new ArrayDeque<>();
         for (char character : s.toCharArray()) {
             charCount[character - 'a']--;
             if (visited[character - 'a']) continue;
-            while (!characters.empty() && character < characters.peek() && charCount[characters.peek() - 'a'] > 0)
-                visited[characters.pop() - 'a'] = false;
-            characters.push(character);
+            while (!characters.isEmpty() && character < characters.peekLast() && charCount[characters.peekLast() - 'a'] > 0)
+                visited[characters.removeLast() - 'a'] = false;
+            characters.addLast(character);
             visited[character - 'a'] = true;
         }
         StringBuilder result = new StringBuilder();

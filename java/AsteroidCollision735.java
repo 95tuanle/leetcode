@@ -1,5 +1,5 @@
+import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.Stack;
 
 /*
 We are given an array asteroids of integers representing asteroids in a row.
@@ -17,43 +17,15 @@ public class AsteroidCollision735 {
     }
 
     public static int[] asteroidCollision(int[] asteroids) {
-        Stack<Integer> stack = new Stack<>();
+        ArrayDeque<Integer> deque = new ArrayDeque<>();
         for (int i : asteroids) {
-            while (!stack.isEmpty() && stack.peek() > 0 && stack.peek() < -i)
-                stack.pop();  // Destroy smaller asteroid moving left
-            if (stack.isEmpty() || i > 0 || stack.peek() < 0)
-                stack.push(i);  // No collision or current asteroid is moving right
-            else if (i < 0 && stack.peek() == -i) stack.pop();  // Both asteroids have equal sizes, destroy both
-//            if (stack.empty()) {
-//                stack.push(i);
-//            } else {
-//                if (stack.peek() > 0 && i < 0) {
-//                    while (stack.peek() > 0) {
-//                        int absI = Math.abs(i);
-//                        if (stack.peek() < absI) {
-//                            stack.pop();
-//                            if (stack.empty()) {
-//                                stack.push(i);
-//                                break;
-//                            }
-//                            if (stack.peek() > absI) {
-//                                break;
-//                            }
-//                            if (stack.peek() < 0) {
-//                                stack.push(i);
-//                            }
-//                        } else if (stack.peek() == absI) {
-//                            stack.pop();
-//                            break;
-//                        } else {
-//                            break;
-//                        }
-//                    }
-//                } else {
-//                    stack.push(i);
-//                }
-//            }
+            while (!deque.isEmpty() && deque.peekLast() > 0 && deque.peekLast() < -i)
+                deque.removeLast();  // Destroy smaller asteroid moving left
+            if (deque.isEmpty() || i > 0 || deque.peekLast() < 0)
+                deque.addLast(i);  // No collision or current asteroid is moving right
+            else if (i < 0 && deque.peekLast() == -i)
+                deque.removeLast();  // Both asteroids have equal sizes, destroy both
         }
-        return stack.stream().mapToInt(Integer::intValue).toArray();
+        return deque.stream().mapToInt(Integer::intValue).toArray();
     }
 }
