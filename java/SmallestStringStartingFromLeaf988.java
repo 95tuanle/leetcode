@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 /*
 You are given the root of a binary tree where each node has a value in the range [0, 25] representing the letters 'a' to 'z'.
 Return the lexicographically smallest string that starts at a leaf of this tree and ends at the root.
@@ -35,19 +33,15 @@ public class SmallestStringStartingFromLeaf988 {
 
     private static String depthFirstSearch(TreeNode root, StringBuilder stringBuilder) {
         stringBuilder.insert(0, (char) (root.val + 'a'));
-        if (root.left == null && root.right == null) {
-            String result = stringBuilder.toString();
-            stringBuilder.deleteCharAt(0);
-            return result;
-        } else if (root.left != null && root.right != null) {
+        String result;
+        if (root.left == null && root.right == null) result = stringBuilder.toString();
+        else if (root.left != null && root.right != null) {
             String left = depthFirstSearch(root.left, stringBuilder), right = depthFirstSearch(root.right, stringBuilder);
-            stringBuilder.deleteCharAt(0);
-            return left.compareTo(right) < 0 ? left : right;
-        } else {
-            String result = depthFirstSearch(Objects.requireNonNullElseGet(root.left, () -> root.right), stringBuilder);
-            stringBuilder.deleteCharAt(0);
-            return result;
-        }
+            result = left.compareTo(right) < 0 ? left : right;
+        } else if (root.right == null) result = depthFirstSearch(root.left, stringBuilder);
+        else result = depthFirstSearch(root.right, stringBuilder);
+        stringBuilder.deleteCharAt(0);
+        return result;
     }
 
     public static class TreeNode {
