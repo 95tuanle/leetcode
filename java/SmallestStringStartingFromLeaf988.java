@@ -30,16 +30,24 @@ public class SmallestStringStartingFromLeaf988 {
     }
 
     public static String smallestFromLeaf(TreeNode root) {
-        return depthFirstSearch(root, "");
+        return depthFirstSearch(root, new StringBuilder());
     }
 
-    private static String depthFirstSearch(TreeNode root, String s) {
-        s = (char) (root.val + 'a') + s;
-        if (root.left == null && root.right == null) return s;
-        else if (root.left != null && root.right != null) {
-            String left = depthFirstSearch(root.left, s), right = depthFirstSearch(root.right, s);
+    private static String depthFirstSearch(TreeNode root, StringBuilder stringBuilder) {
+        stringBuilder.insert(0, (char) (root.val + 'a'));
+        if (root.left == null && root.right == null) {
+            String result = stringBuilder.toString();
+            stringBuilder.deleteCharAt(0);
+            return result;
+        } else if (root.left != null && root.right != null) {
+            String left = depthFirstSearch(root.left, stringBuilder), right = depthFirstSearch(root.right, stringBuilder);
+            stringBuilder.deleteCharAt(0);
             return left.compareTo(right) < 0 ? left : right;
-        } else return depthFirstSearch(Objects.requireNonNullElseGet(root.left, () -> root.right), s);
+        } else {
+            String result = depthFirstSearch(Objects.requireNonNullElseGet(root.left, () -> root.right), stringBuilder);
+            stringBuilder.deleteCharAt(0);
+            return result;
+        }
     }
 
     public static class TreeNode {
