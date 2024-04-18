@@ -87,13 +87,21 @@ dmypy.json
 .pytype/
 cython_debug/
 
+# JavaScript / TypeScript
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+package-lock.json
+yarn.lock
+*.tsbuildinfo
+
 # IDEs and editors
 .idea
 .DS_Store
 out
 *.ctxt
-# Uncomment the following line if you're not using JetBrains IDEs
-# .idea/
+
 
 # Logs
 *.log
