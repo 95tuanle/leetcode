@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-
 /*
 Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
 An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
@@ -16,29 +14,40 @@ public class NumberOfIslands200 {
             for (int j = 0; j < columns; j++)
                 if (grid[i][j] == '1') {
                     result++;
-                    LinkedList<int[]> queue = new LinkedList<>();
-                    queue.add(new int[]{i, j});
-                    grid[i][j] = '0';
-                    while (!queue.isEmpty()) {
-                        int[] target = queue.remove();
-                        if (target[0] != 0 && grid[target[0] - 1][target[1]] == '1') {
-                            queue.add(new int[]{target[0] - 1, target[1]});
-                            grid[target[0] - 1][target[1]] = '0';
-                        }
-                        if (target[1] != 0 && grid[target[0]][target[1] - 1] == '1') {
-                            queue.add(new int[]{target[0], target[1] - 1});
-                            grid[target[0]][target[1] - 1] = '0';
-                        }
-                        if (target[0] != rows - 1 && grid[target[0] + 1][target[1]] == '1') {
-                            queue.add(new int[]{target[0] + 1, target[1]});
-                            grid[target[0] + 1][target[1]] = '0';
-                        }
-                        if (target[1] != columns - 1 && grid[target[0]][target[1] + 1] == '1') {
-                            queue.add(new int[]{target[0], target[1] + 1});
-                            grid[target[0]][target[1] + 1] = '0';
-                        }
-                    }
+                    depthFirstSearch(grid, i, j, rows, columns);
+//                    LinkedList<int[]> queue = new LinkedList<>();
+//                    queue.add(new int[]{i, j});
+//                    grid[i][j] = '0';
+//                    while (!queue.isEmpty()) {
+//                        int[] target = queue.remove();
+//                        if (target[0] != 0 && grid[target[0] - 1][target[1]] == '1') {
+//                            queue.add(new int[]{target[0] - 1, target[1]});
+//                            grid[target[0] - 1][target[1]] = '0';
+//                        }
+//                        if (target[1] != 0 && grid[target[0]][target[1] - 1] == '1') {
+//                            queue.add(new int[]{target[0], target[1] - 1});
+//                            grid[target[0]][target[1] - 1] = '0';
+//                        }
+//                        if (target[0] != rows - 1 && grid[target[0] + 1][target[1]] == '1') {
+//                            queue.add(new int[]{target[0] + 1, target[1]});
+//                            grid[target[0] + 1][target[1]] = '0';
+//                        }
+//                        if (target[1] != columns - 1 && grid[target[0]][target[1] + 1] == '1') {
+//                            queue.add(new int[]{target[0], target[1] + 1});
+//                            grid[target[0]][target[1] + 1] = '0';
+//                        }
+//                    }
                 }
         return result;
+    }
+
+    private static void depthFirstSearch(char[][] grid, int i, int j, int rows, int columns) {
+        if (i >= 0 && i < rows && j >= 0 && j < columns && grid[i][j] == '1') {
+            grid[i][j] = '0';
+            depthFirstSearch(grid, i - 1, j, rows, columns);
+            depthFirstSearch(grid, i + 1, j, rows, columns);
+            depthFirstSearch(grid, i, j - 1, rows, columns);
+            depthFirstSearch(grid, i, j + 1, rows, columns);
+        }
     }
 }
