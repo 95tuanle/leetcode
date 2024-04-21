@@ -14,10 +14,9 @@ public class FindIfPathExistsInGraph1971 {
 
     public static boolean validPath(int n, int[][] edges, int source, int destination) {
         HashMap<Integer, ArrayList<Integer>> graph = new HashMap<>();
-        for (int i = 0; i < n; i++) graph.put(i, new ArrayList<>());
         for (int[] edge : edges) {
-            graph.get(edge[0]).add(edge[1]);
-            graph.get(edge[1]).add(edge[0]);
+            graph.computeIfAbsent(edge[0], k -> new ArrayList<>()).add(edge[1]);
+            graph.computeIfAbsent(edge[1], k -> new ArrayList<>()).add(edge[0]);
         }
         boolean[] visited = new boolean[n];
         return depthFirstSearch(source, destination, graph, visited);
@@ -26,7 +25,7 @@ public class FindIfPathExistsInGraph1971 {
     private static boolean depthFirstSearch(int source, int destination, HashMap<Integer, ArrayList<Integer>> graph, boolean[] visited) {
         if (source == destination) return true;
         visited[source] = true;
-        for (int neighbor : graph.get(source))
+        for (int neighbor : graph.getOrDefault(source, new ArrayList<>()))
             if (!visited[neighbor] && depthFirstSearch(neighbor, destination, graph, visited)) return true;
         return false;
     }
