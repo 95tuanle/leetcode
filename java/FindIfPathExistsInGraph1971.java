@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 /*
 There is a bi-directional graph with n vertices, where each vertex is labeled from 0 to n - 1 (inclusive). The edges in the graph are represented as a 2D integer array edges, where each edges[i] = [ui, vi] denotes a bi-directional edge between vertex ui and vertex vi. Every vertex pair is connected by at most one edge, and no vertex has an edge to itself.
@@ -19,14 +20,34 @@ public class FindIfPathExistsInGraph1971 {
             graph.computeIfAbsent(edge[1], k -> new ArrayList<>()).add(edge[0]);
         }
         boolean[] visited = new boolean[n];
-        return depthFirstSearch(source, destination, graph, visited);
-    }
-
-    private static boolean depthFirstSearch(int source, int destination, HashMap<Integer, ArrayList<Integer>> graph, boolean[] visited) {
-        if (source == destination) return true;
+        LinkedList<Integer> queue = new LinkedList<>();
         visited[source] = true;
-        for (int neighbor : graph.getOrDefault(source, new ArrayList<>()))
-            if (!visited[neighbor] && depthFirstSearch(neighbor, destination, graph, visited)) return true;
+        queue.add(source);
+        while (!queue.isEmpty()) {
+            int node = queue.remove();
+            if (node == destination) return true;
+            for (int neighbor : graph.getOrDefault(node, new ArrayList<>()))
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.add(neighbor);
+                }
+        }
         return false;
+
+//        HashMap<Integer, ArrayList<Integer>> graph = new HashMap<>();
+//        for (int[] edge : edges) {
+//            graph.computeIfAbsent(edge[0], k -> new ArrayList<>()).add(edge[1]);
+//            graph.computeIfAbsent(edge[1], k -> new ArrayList<>()).add(edge[0]);
+//        }
+//        boolean[] visited = new boolean[n];
+//        return depthFirstSearch(source, destination, graph, visited);
+//    }
+//
+//    private static boolean depthFirstSearch(int source, int destination, HashMap<Integer, ArrayList<Integer>> graph, boolean[] visited) {
+//        if (source == destination) return true;
+//        visited[source] = true;
+//        for (int neighbor : graph.getOrDefault(source, new ArrayList<>()))
+//            if (!visited[neighbor] && depthFirstSearch(neighbor, destination, graph, visited)) return true;
+//        return false;
     }
 }
