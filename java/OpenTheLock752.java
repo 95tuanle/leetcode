@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
 
 /*
 You have a lock in front of you with 4 circular wheels. Each wheel has 10 slots: '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'. The wheels can rotate freely and wrap around: for example we can turn '9' to be '0', or '0' to be '9'. Each move consists of turning one wheel one slot.
@@ -17,55 +19,27 @@ public class OpenTheLock752 {
     public static int openLock(String[] deadends, String target) {
         HashSet<String> hashSet = new HashSet<>(Arrays.asList(deadends));
         if (hashSet.contains("0000")) return -1;
-        hashSet.add("0000");
-        Map<Character, Character> nextSlot = new HashMap<>();
-        nextSlot.put('0', '1');
-        nextSlot.put('1', '2');
-        nextSlot.put('2', '3');
-        nextSlot.put('3', '4');
-        nextSlot.put('4', '5');
-        nextSlot.put('5', '6');
-        nextSlot.put('6', '7');
-        nextSlot.put('7', '8');
-        nextSlot.put('8', '9');
-        nextSlot.put('9', '0');
-        Map<Character, Character> prevSlot = new HashMap<>();
-        prevSlot.put('0', '9');
-        prevSlot.put('1', '0');
-        prevSlot.put('2', '1');
-        prevSlot.put('3', '2');
-        prevSlot.put('4', '3');
-        prevSlot.put('5', '4');
-        prevSlot.put('6', '5');
-        prevSlot.put('7', '6');
-        prevSlot.put('8', '7');
-        prevSlot.put('9', '8');
-        int result = 0;
         LinkedList<String> queue = new LinkedList<>();
         queue.add("0000");
+        hashSet.add("0000");
+        int depth = 0;
         while (!queue.isEmpty()) {
-            int breathNodesCount = queue.size();
-            for (int i = 0; i < breathNodesCount; i++) {
+            int breathSize = queue.size();
+            for (int i = 0; i < breathSize; i++) {
                 String combination = queue.remove();
-                if (combination.equals(target)) return result;
-                for (int j = 0; j < 4; j++) {
-                    StringBuilder stringBuilder = new StringBuilder(combination);
-                    stringBuilder.setCharAt(j, nextSlot.get(stringBuilder.charAt(j)));
-                    String string = stringBuilder.toString();
-                    if (!hashSet.contains(string)) {
-                        queue.add(string);
-                        hashSet.add(string);
+                if (combination.equals(target)) return depth;
+                for (int j = 0; j < 4; j++)
+                    for (int k = -1; k <= 1; k += 2) {
+                        char[] chars = combination.toCharArray();
+                        chars[j] = (char) ((chars[j] - '0' + k + 10) % 10 + '0');
+                        String newCombination = new String(chars);
+                        if (!hashSet.contains(newCombination)) {
+                            hashSet.add(newCombination);
+                            queue.add(newCombination);
+                        }
                     }
-                    stringBuilder = new StringBuilder(combination);
-                    stringBuilder.setCharAt(j, prevSlot.get(stringBuilder.charAt(j)));
-                    string = stringBuilder.toString();
-                    if (!hashSet.contains(string)) {
-                        queue.add(string);
-                        hashSet.add(string);
-                    }
-                }
             }
-            result++;
+            depth++;
         }
         return -1;
     }
