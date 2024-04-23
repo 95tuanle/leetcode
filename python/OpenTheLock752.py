@@ -24,8 +24,9 @@ def openLock(deadends: List[str], target: str) -> int:
             if combination == target:
                 return depth
             for j in range(4):
+                digit = int(combination[j])
                 for k in [-1, 1]:
-                    new_combination = combination[:j] + str((int(combination[j]) + k) % 10) + combination[j + 1:]
+                    new_combination = combination[:j] + str((digit + k) % 10) + combination[j + 1:]
                     if new_combination not in visited:
                         visited.add(new_combination)
                         queue.append(new_combination)
@@ -34,23 +35,24 @@ def openLock(deadends: List[str], target: str) -> int:
 
 
 if __name__ == '__main__':
-    print(openLock(["0201", "0101", "0102", "1212", "2002"], "0202"))  # 6
-    print(openLock(["8888"], "0009"))  # 1
-    print(openLock(["8888"], "0000"))  # 0
-    print(openLock(["0000"], "8888"))  # -1
-    print(openLock(["0000", "0001", "0009"], "8888"))  # -1
-    print(openLock(["0000", "0001", "0009"], "0008"))  # 4
-    print(openLock(["0000", "0001", "0009"], "0007"))  # 3
-    print(openLock(["0000", "0001", "0009"], "0006"))  # 2
-    print(openLock(["0000", "0001", "0009"], "0005"))  # 1
-    print(openLock(["0000", "0001", "0009"], "0004"))  # 2
-    print(openLock(["0000", "0001", "0009"], "0003"))  # 3
-    print(openLock(["0000", "0001", "0009"], "0002"))  # 4
-    print(openLock(["0000", "0001", "0009"], "0001"))  # 1
-    print(openLock(["0000", "0001", "0009"], "0000"))  # 0
-    print(openLock(["0000", "0001", "0009"], "9999"))  # -1
-    print(openLock(["0000", "0001", "0009"], "9998"))  # -1
-    print(openLock(["0000", "0001", "0009"], "9997"))  # -1
-    print(openLock(["0000", "0001", "0009"], "9996"))  # -1
-    print(openLock(["0000", "0001", "0009"], "9995"))  # -1
-    print(openLock(["0000", "0001", "0009"], "9994"))  # -1
+    print(openLock(["0201", "0101", "0102", "1212", "2002"], "0202"))
+    print(openLock(["8888"], "0009"))
+    print(openLock(["8888"], "0000"))
+    print(openLock(["0000"], "8888"))
+    print(openLock(["0000"], "0000"))
+    print(openLock(["0000", "0001", "0009"], "0009"))
+    print(openLock(["0000", "0001", "0009"], "0008"))
+    print(openLock(["0000", "0001", "0009"], "0002"))
+    print(openLock(["0000", "0001", "0009"], "0003"))
+    print(openLock(["0000", "0001", "0009"], "0004"))
+    print(openLock(["0000", "0001", "0009"], "0005"))
+    print(openLock(["0000", "0001", "0009"], "0006"))
+    print(openLock(["0000", "0001", "0009"], "0007"))
+    print(openLock(["0000", "0001", "0009"], "0008"))
+    print(openLock(["0000", "0001", "0009"], "0009"))
+    print(openLock(["0000", "0001", "0009"], "0000"))
+    print(openLock(["0000", "0001", "0009"], "0001"))
+    print(openLock(["0000", "0001", "0009"], "0002"))
+    print(openLock(["0000", "0001", "0009"], "0003"))
+    print(openLock(["0000", "0001", "0009"], "0004"))
+    print(openLock(["0000", "0001", "0009"], "0005"))
