@@ -28,16 +28,19 @@ public class OpenTheLock752 {
             for (int i = 0; i < breathSize; i++) {
                 String combination = queue.remove();
                 if (combination.equals(target)) return depth;
-                for (int j = 0; j < 4; j++)
+                char[] chars = combination.toCharArray();
+                for (int j = 0; j < 4; j++) {
+                    char originalChar = chars[j];
                     for (int k = -1; k <= 1; k += 2) {
-                        char[] chars = combination.toCharArray();
-                        chars[j] = (char) ((chars[j] - '0' + k + 10) % 10 + '0');
+                        chars[j] = (char) ((originalChar - '0' + k + 10) % 10 + '0');
                         String newCombination = new String(chars);
                         if (!hashSet.contains(newCombination)) {
                             hashSet.add(newCombination);
                             queue.add(newCombination);
                         }
                     }
+                    chars[j] = originalChar;
+                }
             }
             depth++;
         }
