@@ -34,9 +34,9 @@ public class MinimumHeightTrees310 {
             n -= leaves.size();
             ArrayList<Integer> newLeaves = new ArrayList<>();
             for (int leaf : leaves) {
-                int j = adj.get(leaf).getFirst();
-                adj.get(j).removeFirstOccurrence(leaf);
-                if (adj.get(j).size() == 1) newLeaves.add(j);
+                int i = adj.get(leaf).getFirst();
+                adj.get(i).removeFirstOccurrence(leaf);
+                if (adj.get(i).size() == 1) newLeaves.add(i);
             }
             leaves = newLeaves;
         }
