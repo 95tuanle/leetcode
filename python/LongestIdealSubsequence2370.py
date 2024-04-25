@@ -7,17 +7,11 @@
 def longestIdealString(s: str, k: int) -> int:
     result, dp, first = 0, [0] * 26, ord('a')
     for character in s:
-        current, longest, i = ord(character) - first, 0, 0
-        while i < current:
-            if current - i <= k:
-                longest = max(longest, dp[i])
-            i += 1
-        while i < 26:
-            if i - current <= k:
-                longest = max(longest, dp[i])
-            i += 1
-        dp[current] = max(dp[current], longest + 1)
-        result = max(result, dp[current])
+        current, longest = ord(character) - first, 0
+        for i in range(max(0, current - k), min(26, current + k + 1)):
+            longest = max(longest, dp[i])
+        dp[current] = longest + 1
+        result = max(result, longest + 1)
     return result
 
 
