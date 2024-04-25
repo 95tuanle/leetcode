@@ -42,13 +42,11 @@ public class LongestIdealSubsequence2370 {
         int result = 0;
         int[] dp = new int[26];
         for (Character character : s.toCharArray()) {
-            int current = character - 'a', longest = 0, i = 0;
-            for (; i < current; i++)
-                if (current - i <= k) longest = Math.max(longest, dp[i]);
-            for (; i < 26; i++)
-                if (i - current <= k) longest = Math.max(longest, dp[i]);
-            dp[current] = Math.max(dp[current], longest + 1);
-            result = Math.max(result, dp[current]);
+            int current = character - 'a', longest = 0;
+            for (int i = Math.max(0, current - k); i <= Math.min(25, current + k); i++)
+                longest = Math.max(longest, dp[i]);
+            dp[current] = ++longest;
+            result = Math.max(result, longest);
         }
         return result;
     }
