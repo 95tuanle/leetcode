@@ -11,33 +11,58 @@ public class MinimumFallingPathSumII {
     }
 
     public static int minFallingPathSum(int[][] grid) {
-        int n = grid.length, smallestSum = 0, smallestPreviousIndex = -1, secondSmallestSum = 0;
-        for (int[] row : grid) {
-            int smallest = 100, smallestIndex = -1, secondSmallest = 100, secondSmallestIndex = -1;
-            for (int j = 0; j < n; j++)
-                if (smallest > row[j]) {
+        int n = grid.length, smallestSum = 100, smallestPreviousIndex = -1, secondSmallestSum = 100;
+        for (int i = 0; i < n; i++)
+            if (grid[n - 1][i] <= smallestSum) {
+                secondSmallestSum = smallestSum;
+                smallestSum = grid[n - 1][i];
+                smallestPreviousIndex = i;
+            } else if (grid[n - 1][i] <= secondSmallestSum) secondSmallestSum = grid[n - 1][i];
+        for (int i = n - 2; i >= 0; i--) {
+            int smallest = 100 + smallestSum, smallestIndex = -1, secondSmallest = 100 + secondSmallestSum;
+            for (int j = 0; j < n; j++) {
+                int value;
+                if (j != smallestPreviousIndex) value = grid[i][j] + smallestSum;
+                else value = grid[i][j] + secondSmallestSum;
+                if (value <= smallest) {
                     secondSmallest = smallest;
-                    secondSmallestIndex = smallestIndex;
-                    smallest = row[j];
+                    smallest = value;
                     smallestIndex = j;
-                } else if (secondSmallest > row[j]) {
-                    secondSmallest = row[j];
-                    secondSmallestIndex = j;
-                }
-            if (smallestIndex != smallestPreviousIndex) smallest += smallestSum;
-            else smallest += secondSmallestSum;
-            if (secondSmallestIndex != smallestPreviousIndex) secondSmallest += smallestSum;
-            else secondSmallest += secondSmallestSum;
-            if (smallest > secondSmallest) {
-                smallestSum = secondSmallest;
-                smallestPreviousIndex = secondSmallestIndex;
-                secondSmallestSum = smallest;
-            } else {
-                smallestSum = smallest;
-                smallestPreviousIndex = smallestIndex;
-                secondSmallestSum = secondSmallest;
+                } else if (value <= secondSmallest) secondSmallest = value;
             }
+            smallestSum = smallest;
+            smallestPreviousIndex = smallestIndex;
+            secondSmallestSum = secondSmallest;
         }
         return smallestSum;
+
+//        int n = grid.length, smallestSum = 0, smallestPreviousIndex = -1, secondSmallestSum = 0;
+//        for (int[] row : grid) {
+//            int smallest = 100, smallestIndex = -1, secondSmallest = 100, secondSmallestIndex = -1;
+//            for (int j = 0; j < n; j++)
+//                if (smallest > row[j]) {
+//                    secondSmallest = smallest;
+//                    secondSmallestIndex = smallestIndex;
+//                    smallest = row[j];
+//                    smallestIndex = j;
+//                } else if (secondSmallest > row[j]) {
+//                    secondSmallest = row[j];
+//                    secondSmallestIndex = j;
+//                }
+//            if (smallestIndex != smallestPreviousIndex) smallest += smallestSum;
+//            else smallest += secondSmallestSum;
+//            if (secondSmallestIndex != smallestPreviousIndex) secondSmallest += smallestSum;
+//            else secondSmallest += secondSmallestSum;
+//            if (smallest > secondSmallest) {
+//                smallestSum = secondSmallest;
+//                smallestPreviousIndex = secondSmallestIndex;
+//                secondSmallestSum = smallest;
+//            } else {
+//                smallestSum = smallest;
+//                smallestPreviousIndex = smallestIndex;
+//                secondSmallestSum = secondSmallest;
+//            }
+//        }
+//        return smallestSum;
     }
 }
