@@ -11,22 +11,22 @@ public class MinimumFallingPathSumII {
     }
 
     public static int minFallingPathSum(int[][] grid) {
-        int n = grid.length, smallestSum = 0, smallestPreviousIndex = -1, secondSmallestSum = 0;
+        int n = grid.length, smallestSum = 0, smallestIndex = -1, secondSmallestSum = 0;
         for (int[] row : grid) {
-            int smallest = 100 + smallestSum, smallestIndex = -1, secondSmallest = 100 + secondSmallestSum;
+            int currentSmallestSum = 100 + smallestSum, currentSmallestIndex = -1, currentSecondSmallestSum = 100 + secondSmallestSum;
             for (int i = 0; i < n; i++) {
                 int value;
-                if (i != smallestPreviousIndex) value = row[i] + smallestSum;
+                if (i != smallestIndex) value = row[i] + smallestSum;
                 else value = row[i] + secondSmallestSum;
-                if (value <= smallest) {
-                    secondSmallest = smallest;
-                    smallest = value;
-                    smallestIndex = i;
-                } else if (value <= secondSmallest) secondSmallest = value;
+                if (value < currentSmallestSum) {
+                    currentSecondSmallestSum = currentSmallestSum;
+                    currentSmallestSum = value;
+                    currentSmallestIndex = i;
+                } else if (value < currentSecondSmallestSum) currentSecondSmallestSum = value;
             }
-            smallestSum = smallest;
-            smallestPreviousIndex = smallestIndex;
-            secondSmallestSum = secondSmallest;
+            smallestSum = currentSmallestSum;
+            smallestIndex = currentSmallestIndex;
+            secondSmallestSum = currentSecondSmallestSum;
         }
         return smallestSum;
 
