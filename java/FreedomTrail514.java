@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 /*
 In the video game Fallout 4, the quest "Road to Freedom" requires players to reach a metal dial called the "Freedom Trail Ring" and use the dial to spell a specific keyword to open the door.
@@ -16,20 +18,38 @@ public class FreedomTrail514 {
 
     public static int findRotateSteps(String ring, String key) {
         int ringLength = ring.length();
-        int[] dp = new int[ringLength], current = new int[ringLength];
+        int[] dp = new int[ringLength];
+        HashMap<Character, ArrayList<Integer>> positions = new HashMap<>();
+        for (int i = 0; i < ringLength; i++)
+            positions.computeIfAbsent(ring.charAt(i), k -> new ArrayList<>()).add(i);
         for (int i = key.length() - 1; i >= 0; i--) {
+            int[] current = new int[ringLength];
             Arrays.fill(current, Integer.MAX_VALUE);
-            char character = key.charAt(i);
-            for (int j = 0; j < ringLength; j++) {
-                for (int k = 0; k < ringLength; k++) {
-                    if (ring.charAt(k) == character) {
-                        int stepsBetween = Math.abs(k - j);
-                        current[j] = Math.min(current[j], dp[k] + 1 + Math.min(stepsBetween, ringLength - stepsBetween));
-                    }
+            for (int position : positions.get(key.charAt(i)))
+                for (int j = 0; j < ringLength; j++) {
+                    int stepsBetween = Math.abs(j - position);
+                    current[j] = Math.min(current[j], dp[position] + 1 + Math.min(stepsBetween, ringLength - stepsBetween));
                 }
-            }
-            dp = current.clone();
+            dp = current;
         }
         return dp[0];
+
+//        int ringLength = ring.length();
+//        int[] dp = new int[ringLength];
+//        for (int i = key.length() - 1; i >= 0; i--) {
+//            int[] current = new int[ringLength];
+//            Arrays.fill(current, Integer.MAX_VALUE);
+//            char character = key.charAt(i);
+//            for (int j = 0; j < ringLength; j++) {
+//                for (int k = 0; k < ringLength; k++) {
+//                    if (ring.charAt(k) == character) {
+//                        int stepsBetween = Math.abs(k - j);
+//                        current[j] = Math.min(current[j], dp[k] + 1 + Math.min(stepsBetween, ringLength - stepsBetween));
+//                    }
+//                }
+//            }
+//            dp = current;
+//        }
+//        return dp[0];
     }
 }
