@@ -15,9 +15,9 @@ public class MinimumFallingPathSumII {
         for (int[] row : grid) {
             int currentSmallest = 100 + smallest, currentSmallestIndex = -1, currentSecondSmallest = 100 + secondSmallest;
             for (int i = 0; i < n; i++) {
-                int value;
-                if (i != smallestIndex) value = row[i] + smallest;
-                else value = row[i] + secondSmallest;
+                int value = row[i];
+                if (i != smallestIndex) value += smallest;
+                else value += secondSmallest;
                 if (value < currentSmallest) {
                     currentSecondSmallest = currentSmallest;
                     currentSmallest = value;
