@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 /*
 There are n cities numbered from 0 to n - 1 and n - 1 roads such that there is only one way to travel between two different cities (this network form a tree). Last year, The ministry of transport decided to orient the roads in one direction because they are too narrow.
@@ -15,16 +17,16 @@ public class ReorderRoutesToMakeAllPathsLeadToTheCityZero1466 {
     }
 
     public static int minReorder(int n, int[][] connections) {
-        Map<Integer, List<Integer>> graph = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> graph = new HashMap<>();
         for (int[] connection : connections) {
             graph.computeIfAbsent(connection[0], k -> new ArrayList<>()).add(connection[1]);
             graph.computeIfAbsent(connection[1], k -> new ArrayList<>()).add(-connection[0]);
         }
-        Set<Integer> visited = new HashSet<>();
+        HashSet<Integer> visited = new HashSet<>();
         return depthFirstSearch(0, graph, visited, 0);
     }
 
-    private static int depthFirstSearch(int city, Map<Integer, List<Integer>> graph, Set<Integer> visited, int result) {
+    private static int depthFirstSearch(int city, HashMap<Integer, ArrayList<Integer>> graph, HashSet<Integer> visited, int result) {
         visited.add(city);
         for (int neighbor : graph.getOrDefault(city, new ArrayList<>()))
             if (!visited.contains(Math.abs(neighbor))) {
