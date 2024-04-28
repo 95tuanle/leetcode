@@ -26,21 +26,21 @@ public class SumOfDistancesInTree834 {
         return result;
     }
 
-    private static void depthFirstSearch(int root, int pre, HashMap<Integer, ArrayList<Integer>> graph, int[] result, int[] count) {
-        for (int neighbor : graph.getOrDefault(root, new ArrayList<>())) {
-            if (neighbor == pre) continue;
-            depthFirstSearch(neighbor, root, graph, result, count);
-            count[root] += count[neighbor];
-            result[root] += result[neighbor] + count[neighbor];
-        }
+    private static void depthFirstSearch(int root, int previous, HashMap<Integer, ArrayList<Integer>> graph, int[] result, int[] count) {
         count[root]++;
+        for (int neighbor : graph.getOrDefault(root, new ArrayList<>()))
+            if (neighbor != previous) {
+                depthFirstSearch(neighbor, root, graph, result, count);
+                count[root] += count[neighbor];
+                result[root] += result[neighbor] + count[neighbor];
+            }
     }
 
-    private static void depthFirstSearch2(int root, int pre, HashMap<Integer, ArrayList<Integer>> graph, int[] result, int[] count, int n) {
-        for (int neighbor : graph.getOrDefault(root, new ArrayList<>())) {
-            if (neighbor == pre) continue;
-            result[neighbor] = result[root] - count[neighbor] + n - count[neighbor];
-            depthFirstSearch2(neighbor, root, graph, result, count, n);
-        }
+    private static void depthFirstSearch2(int root, int previous, HashMap<Integer, ArrayList<Integer>> graph, int[] result, int[] count, int n) {
+        for (int neighbor : graph.getOrDefault(root, new ArrayList<>()))
+            if (neighbor != previous) {
+                result[neighbor] = result[root] - count[neighbor] + n - count[neighbor];
+                depthFirstSearch2(neighbor, root, graph, result, count, n);
+            }
     }
 }

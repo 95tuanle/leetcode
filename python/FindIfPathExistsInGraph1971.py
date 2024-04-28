@@ -10,9 +10,9 @@ from typing import List
 
 def validPath(n: int, edges: List[List[int]], source: int, destination: int) -> bool:
     graph = defaultdict(list)
-    for u, v in edges:
-        graph[u].append(v)
-        graph[v].append(u)
+    for i, j in edges:
+        graph[i].append(j)
+        graph[j].append(i)
     visited = [False] * n
     queue = deque([source])
     while queue:
