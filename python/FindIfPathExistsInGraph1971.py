@@ -9,21 +9,34 @@ from typing import List
 
 
 def validPath(n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-    graph = defaultdict(list)
-    for i, j in edges:
-        graph[i].append(j)
-        graph[j].append(i)
-    visited = [False] * n
-    queue = deque([source])
-    while queue:
-        node = queue.popleft()
-        if node == destination:
-            return True
-        for neighbor in graph[node]:
-            if not visited[neighbor]:
-                visited[neighbor] = True
-                queue.append(neighbor)
-    return False
+    parent = [i for i in range(n)]
+
+    def find(x):
+        if parent[x] != x:
+            parent[x] = find(parent[x])
+        return parent[x]
+
+    for vertex0, vertex1 in edges:
+        parent0, parent1 = find(vertex0), find(vertex1)
+        if parent0 != parent1:
+            parent[parent0] = parent1
+    return find(source) == find(destination)
+
+    # graph = defaultdict(list)
+    # for i, j in edges:
+    #     graph[i].append(j)
+    #     graph[j].append(i)
+    # visited = [False] * n
+    # queue = deque([source])
+    # while queue:
+    #     node = queue.popleft()
+    #     if node == destination:
+    #         return True
+    #     for neighbor in graph[node]:
+    #         if not visited[neighbor]:
+    #             visited[neighbor] = True
+    #             queue.append(neighbor)
+    # return False
 
 
 if __name__ == '__main__':
