@@ -12,14 +12,14 @@ public class LargestPositiveIntegerThatExistsWithItsNegative2441 {
     }
 
     public static int findMaxK(int[] nums) {
-        int max = -1;
+        int result = -1;
         int[] array = new int[1001];
         for (int num : nums) {
             int index = Math.abs(num);
             if (array[index] != num) array[index] += num;
-            if (array[index] == 0) max = Math.max(max, index);
+            if (array[index] == 0) result = Math.max(result, index);
         }
-        return max;
+        return result;
 
 //        Arrays.sort(nums);
 //        int left = 0, right = nums.length - 1;
