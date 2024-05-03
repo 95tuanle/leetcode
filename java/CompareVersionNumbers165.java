@@ -23,10 +23,10 @@ public class CompareVersionNumbers165 {
         int version1Length = version1Strings.length, version2Length = version2Strings.length;
         int maxLength = Math.max(version1Length, version2Length);
         for (int i = 0; i < maxLength; i++) {
-            int int1 = i < version1Length ? Integer.parseInt(version1Strings[i]) : 0;
-            int int2 = i < version2Length ? Integer.parseInt(version2Strings[i]) : 0;
-            if (int1 < int2) return -1;
-            else if (int1 > int2) return 1;
+            int num1 = i < version1Length ? Integer.parseInt(version1Strings[i]) : 0;
+            int num2 = i < version2Length ? Integer.parseInt(version2Strings[i]) : 0;
+            if (num1 < num2) return -1;
+            else if (num1 > num2) return 1;
         }
         return 0;
     }
