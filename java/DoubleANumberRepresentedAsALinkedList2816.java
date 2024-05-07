@@ -26,9 +26,11 @@ public class DoubleANumberRepresentedAsALinkedList2816 {
 
     public static ListNode doubleIt(ListNode head) {
         if (head.val > 4) head = new ListNode(0, head);
-        for (ListNode node = head; node != null; node = node.next) {
+        ListNode node = head;
+        while (node != null) {
             node.val = (node.val * 2) % 10;
             if (node.next != null && node.next.val > 4) node.val++;
+            node = node.next;
         }
         return head;
     }
