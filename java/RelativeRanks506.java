@@ -23,16 +23,15 @@ public class RelativeRanks506 {
 
     public static String[] findRelativeRanks(int[] score) {
         int length = score.length;
-        HashMap<Integer, Integer> scoreMap = new HashMap<>();
-        for (int i = 0; i < length; i++) scoreMap.put(score[i], i);
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        for (int i = 0; i < length; i++) hashMap.put(score[i], i);
         Arrays.sort(score);
         String[] result = new String[length];
-        for (int i = 0; i < length; i++) {
-            if (i == 0) result[scoreMap.get(score[length - 1 - i])] = "Gold Medal";
-            else if (i == 1) result[scoreMap.get(score[length - 1 - i])] = "Silver Medal";
-            else if (i == 2) result[scoreMap.get(score[length - 1 - i])] = "Bronze Medal";
-            else result[scoreMap.get(score[length - 1 - i])] = String.valueOf(i + 1);
-        }
+        for (int i = length - 1; i >= 0; i--)
+            if (i == length - 1) result[hashMap.get(score[i])] = "Gold Medal";
+            else if (i == length - 2) result[hashMap.get(score[i])] = "Silver Medal";
+            else if (i == length - 3) result[hashMap.get(score[i])] = "Bronze Medal";
+            else result[hashMap.get(score[i])] = Integer.toString(length - i);
         return result;
 
 //        int n = score.length;
