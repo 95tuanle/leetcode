@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashMap;
 
 /*
 You are given an integer array score of size n, where score[i] is the score of the ith athlete in a competition. All the scores are guaranteed to be unique.
@@ -21,20 +22,32 @@ public class RelativeRanks506 {
     }
 
     public static String[] findRelativeRanks(int[] score) {
-        int n = score.length;
-        int[][] ranks = new int[n][2];
-        for (int i = 0; i < n; i++) {
-            ranks[i][0] = score[i];
-            ranks[i][1] = i;
-        }
-        Arrays.sort(ranks, (a, b) -> b[0] - a[0]);
-        String[] result = new String[n];
-        for (int i = 0; i < n; i++) {
-            if (i == 0) result[ranks[i][1]] = "Gold Medal";
-            else if (i == 1) result[ranks[i][1]] = "Silver Medal";
-            else if (i == 2) result[ranks[i][1]] = "Bronze Medal";
-            else result[ranks[i][1]] = String.valueOf(i + 1);
-        }
+        int length = score.length;
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        for (int i = 0; i < length; i++) hashMap.put(score[i], i);
+        Arrays.sort(score);
+        String[] result = new String[length];
+        int place = 4;
+        for (int i = length - 1; i >= 0; i--)
+            if (i == length - 1) result[hashMap.get(score[i])] = "Gold Medal";
+            else if (i == length - 2) result[hashMap.get(score[i])] = "Silver Medal";
+            else if (i == length - 3) result[hashMap.get(score[i])] = "Bronze Medal";
+            else result[hashMap.get(score[i])] = Integer.toString(place++);
         return result;
+
+//        int n = score.length;
+//        int[][] ranks = new int[n][2];
+//        for (int i = 0; i < n; i++) {
+//            ranks[i][0] = score[i];
+//            ranks[i][1] = i;
+//        }
+//        Arrays.sort(ranks, (a, b) -> b[0] - a[0]);
+//        String[] result = new String[n];
+//        for (int i = 0; i < n; i++)
+//            if (i == 0) result[ranks[i][1]] = "Gold Medal";
+//            else if (i == 1) result[ranks[i][1]] = "Silver Medal";
+//            else if (i == 2) result[ranks[i][1]] = "Bronze Medal";
+//            else result[ranks[i][1]] = String.valueOf(i + 1);
+//        return result;
     }
 }
