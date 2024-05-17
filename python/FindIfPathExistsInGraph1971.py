@@ -4,7 +4,6 @@
 # to itself. You want to determine if there is a valid path that exists from vertex source to vertex destination.
 # Given edges and the integers n, source, and destination, return true if there is a valid path from source to
 # destination, or false otherwise.
-from collections import defaultdict, deque
 from typing import List
 
 
