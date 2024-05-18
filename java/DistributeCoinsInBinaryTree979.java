@@ -5,9 +5,13 @@ Return the minimum number of moves required to make every node have exactly one 
 */
 public class DistributeCoinsInBinaryTree979 {
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(3);
-        root.left = new TreeNode(0);
-        root.right = new TreeNode(0);
+        TreeNode root = new TreeNode(3, new TreeNode(0), new TreeNode(0));
+        System.out.println(distributeCoins(root));
+
+        root = new TreeNode(0, new TreeNode(3), new TreeNode(0));
+        System.out.println(distributeCoins(root));
+
+        root = new TreeNode(1, new TreeNode(0), new TreeNode(2));
         System.out.println(distributeCoins(root));
     }
 
@@ -19,8 +23,8 @@ public class DistributeCoinsInBinaryTree979 {
         if (node == null) return new int[]{0, 0};
         int[] left = depthFirstSearch(node.left);
         int[] right = depthFirstSearch(node.right);
-        int available = node.val - 1 + left[1] + right[1];
-        return new int[]{left[0] + right[0] + Math.abs(available), available};
+        int balance = node.val - 1 + left[1] + right[1];
+        return new int[]{left[0] + right[0] + Math.abs(balance), balance};
     }
 
     public static class TreeNode {
